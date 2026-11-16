@@ -1,17 +1,7 @@
-# Build settings for your application
+# Static HTML/CSS/JS site — no build step required.
 [build]
-  # The folder where Netlify runs your build command (defaults to root)
-  base = "/"
-  
-  # The command to build your app (leave blank or remove if using plain HTML/CSS/JS)
-  command = "npm run build"
-  
-  # The folder containing your final deploy-ready files (e.g., dist, build, public, or .)
-  publish = "dist"
+  # Publish the repository root as-is (index.html, fr/, en/, css/, js/, assets/)
+  publish = "."
+  command = ""
 
-# Optional: Single Page App (SPA) routing rule (for React, Vue, Angular, etc.)
-# Ensures all routes point back to index.html so refreshing pages doesn't cause a 404 error
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
+# Multi-page site: unknown URLs fall through to the custom 404.html automatically.
