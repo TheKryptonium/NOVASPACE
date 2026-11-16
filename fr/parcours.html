@@ -120,6 +120,15 @@
       margin-inline: auto;
       object-fit: contain;
     }
+    .timeline-media--uncropped img {
+      width: auto;
+      height: auto;
+      max-width: 100%;
+      max-height: 420px;
+      margin-inline: auto;
+      object-fit: contain;
+      display: block;
+    }
     .timeline-gallery {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(min(100%, 180px), 1fr));
@@ -479,8 +488,8 @@
                 <span class="timeline-badge-status badge-done"><i class="fas fa-award"></i> Réalisé</span>
               </div>
               <p class="timeline-desc">Reconnaissance de l'audace technologique et de la rigueur d'ingénierie de NOVA SPACE au concours de l'ICT Week 2026.</p>
-              <div class="timeline-media">
-                <img src="../assets/Prize ICT Week 2026_6th place.jpeg" alt="Prix ICT Week 2026" loading="lazy">
+              <div class="timeline-media timeline-media--uncropped">
+                <img src="../assets/Prize ICT Week 2026_6th place.jpeg" alt="Les cofondateurs de NOVA SPACE avec le prix de la 6e place à l'ICT Week 2026" loading="lazy">
                 <div class="timeline-media-caption">Attestation de la 6e place obtenue lors de l'ICT Week 2026</div>
               </div>
               <div class="timeline-toggle-hint">
