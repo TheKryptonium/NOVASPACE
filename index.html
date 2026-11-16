@@ -12,7 +12,7 @@
   -->
 
   <!-- Fallback meta refresh vers /fr/ si JS désactivé -->
-  <meta http-equiv="refresh" content="0;url=fr/">
+  <meta http-equiv="refresh" content="0;url=fr/index.html">
 
   <style>
     body {
@@ -36,7 +36,7 @@
   <script>
     (function () {
       var lang = (navigator.language || navigator.userLanguage || 'fr').toLowerCase();
-      var dest = lang.startsWith('en') ? 'en/' : 'fr/';
+      var dest = lang.startsWith('en') ? 'en/index.html' : 'fr/index.html';
       window.location.replace(dest);
     })();
   </script>

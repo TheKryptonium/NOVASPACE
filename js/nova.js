@@ -78,7 +78,7 @@
       // Crée l'overlay
       overlay = document.createElement('div');
       overlay.style.cssText = [
-        'position:fixed', 'inset:0', 'z-index:104',
+        'position:fixed', 'inset:0', 'z-index:99',
         'background:rgba(7,9,13,0.6)',
         'backdrop-filter:blur(2px)',
         '-webkit-backdrop-filter:blur(2px)',

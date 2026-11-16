@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact — NOVA SPACE</title>
+  <meta name="description" content="Contact NOVA SPACE in Douala, Cameroon. Reach the CEO for partnerships, academic collaboration, media inquiries, or opportunities.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="../css/nova.css">
+  <link rel="shortcut icon" href="../assets/novaspace.jpeg" type="image/jpeg">
+  <style>
+    .contact-layout {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--space-12);
+    }
+    @media (min-width: 960px) {
+      .contact-layout {
+        grid-template-columns: 1fr 1.25fr;
+      }
+    }
+    .contact-info-card {
+      background: var(--clr-surface);
+      border: 1px solid rgba(201, 206, 214, 0.1);
+      border-radius: var(--radius-lg);
+      padding: clamp(var(--space-6), 4vw, var(--space-8));
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-6);
+    }
+    .contact-item {
+      display: flex;
+      align-items: flex-start;
+      gap: var(--space-4);
+    }
+    .contact-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: var(--radius-sm);
+      background: rgba(61, 214, 245, 0.08);
+      border: 1px solid rgba(61, 214, 245, 0.25);
+      color: var(--clr-cyan);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: var(--fs-md);
+      flex-shrink: 0;
+    }
+    .contact-details h3 {
+      font-family: var(--font-mono);
+      font-size: var(--fs-xs);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--clr-goal);
+      margin-bottom: 4px;
+    }
+    .contact-details a,
+    .contact-details p {
+      font-size: var(--fs-base);
+      color: var(--clr-offwhite);
+      margin: 0;
+      text-decoration: none;
+      transition: color var(--dur-fast) var(--ease);
+    }
+    .contact-details a:hover {
+      color: var(--clr-cyan);
+    }
+    .form-box {
+      background: var(--clr-surface);
+      border: 1px solid rgba(201, 206, 214, 0.12);
+      border-radius: var(--radius-lg);
+      padding: clamp(var(--space-6), 4vw, var(--space-10));
+    }
+    .form-note {
+      margin-top: var(--space-4);
+      font-family: var(--font-mono);
+      font-size: var(--fs-xs);
+      color: var(--clr-goal);
+      line-height: 1.5;
+    }
+    select.form-control {
+      appearance: none;
+      background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23C9CED6' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+      background-repeat: no-repeat;
+      background-position: right 1rem center;
+      background-size: 1em;
+    }
+    select.form-control option {
+      background: var(--clr-surface);
+      color: var(--clr-offwhite);
+    }
+  </style>
+</head>
+<body>
+  <div class="grain"></div>
+  <header>
+    <nav class="navbar">
+      <div class="brand">
+        <a href="index.html" style="display:flex;align-items:center;gap:var(--space-3);text-decoration:none;">
+          <img src="../assets/novaspace.jpeg" alt="NOVA SPACE" class="brand-logo">
+          <span class="brand-name">NOVA SPACE</span>
+        </a>
+      </div>
+      <div class="navlinks" id="navlinks">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="journey.html" class="nav-link">Journey</a>
+        <a href="programs.html" class="nav-link">Programs</a>
+        <a href="team.html" class="nav-link">Team</a>
+        <a href="media.html" class="nav-link">Media</a>
+        <a href="contact.html" class="nav-link active">Contact</a>
+      </div>
+      <div class="nav-right">
+        <div class="lang-switcher">
+          <span class="lang-btn active">EN</span>
+          <span class="lang-sep">|</span>
+          <a href="../fr/contact.html" class="lang-btn">FR</a>
+        </div>
+        <button class="hamburger" id="hamburger" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <main class="page-top">
+    <section style="padding-top:var(--space-8);padding-bottom:var(--space-8);">
+      <div class="engineering-grid"></div>
+      <div class="wrap">
+        <div class="section-head fade-up">
+          <span class="kicker">Contact</span>
+          <h1>Let's work together.</h1>
+          <p>Partners, universities, media, and talented people — we welcome your message.</p>
+        </div>
+
+        <div class="contact-layout">
+          <div class="contact-info-card fade-up delay-1">
+            <h2 style="font-size:var(--fs-xl);margin-bottom:var(--space-2);">Direct contact</h2>
+            <p style="font-size:var(--fs-sm);color:var(--clr-chrome);">For all inquiries, please contact NOVA SPACE's CEO directly.</p>
+            <div class="contact-item">
+              <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+              <div class="contact-details">
+                <h3>CEO's email</h3>
+                <a href="mailto:victorepombo11@gmail.com">victorepombo11@gmail.com</a>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+              <div class="contact-details">
+                <h3>Location</h3>
+                <p>Douala, Cameroon · ENSPD</p>
+                <div class="mono" style="font-size:11px;color:var(--clr-goal);margin-top:2px;">École Nationale Supérieure Polytechnique de Douala</div>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-icon"><i class="fab fa-youtube"></i></div>
+              <div class="contact-details">
+                <h3>YouTube channel</h3>
+                <a href="https://www.youtube.com/@NovaSpace-cmr" target="_blank" rel="noopener">@NovaSpace-cmr</a>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-icon"><i class="fab fa-linkedin"></i></div>
+              <div class="contact-details">
+                <h3>LinkedIn</h3>
+                <a href="https://www.linkedin.com/in/victor-epombo/" target="_blank" rel="noopener">NOVA SPACE CEO</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-box fade-up delay-2">
+            <h2 style="font-size:var(--fs-xl);margin-bottom:var(--space-4);">Send a message</h2>
+            <form action="#" method="post" id="contactForm" onsubmit="handleContactSubmit(event)">
+              <div class="form-group">
+                <label for="contactName" class="form-label">Full name *</label>
+                <input type="text" id="contactName" name="name" class="form-control" placeholder="Your full name" required>
+              </div>
+              <div class="form-group">
+                <label for="contactOrg" class="form-label">Organization / University</label>
+                <input type="text" id="contactOrg" name="organization" class="form-control" placeholder="Your company, university, or media organization">
+              </div>
+              <div class="form-group">
+                <label for="contactEmail" class="form-label">Email address *</label>
+                <input type="email" id="contactEmail" name="email" class="form-control" placeholder="name@example.com" required>
+              </div>
+              <div class="form-group">
+                <label for="contactSubject" class="form-label">Subject *</label>
+                <select id="contactSubject" name="subject" class="form-control" required>
+                  <option value="" disabled selected>Select a subject</option>
+                  <option value="Partnership">Partnership</option>
+                  <option value="Academic collaboration">Academic collaboration</option>
+                  <option value="Press / Media">Press / Media</option>
+                  <option value="Career inquiry">Career inquiry</option>
+                  <option value="Other">Other</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="contactMessage" class="form-label">Message *</label>
+                <textarea id="contactMessage" name="message" rows="5" class="form-control" placeholder="Tell us about your proposal, project, or inquiry..." required></textarea>
+              </div>
+              <div id="formFeedback" role="status" aria-live="polite" style="display:none;padding:var(--space-3) var(--space-4);margin-bottom:var(--space-4);border-radius:var(--radius-sm);font-size:var(--fs-sm);font-family:var(--font-mono);"></div>
+              <button type="submit" class="btn-primary" style="width:100%;justify-content:center;">Continue by email <i class="fas fa-arrow-right"></i></button>
+              <div class="form-note">
+                <i class="fas fa-info-circle"></i> This static form has no backend. It prepares an email to the CEO for you to send.
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap foot-layout">
+      <div class="foot-brand">
+        <img src="../assets/novaspace.jpeg" alt="NOVA SPACE">
+        <div>
+          <span class="brand-name">NOVA SPACE</span>
+          <div class="foot-tagline">PERSEVERE TO THE STARS.</div>
+        </div>
+      </div>
+      <nav class="foot-nav">
+        <a href="journey.html">Journey</a>
+        <a href="programs.html">Programs</a>
+        <a href="team.html">Team</a>
+        <a href="media.html">Media</a>
+        <a href="contact.html">Contact</a>
+        <a href="../fr/mentions-legales.html">Legal notice (FR)</a>
+      </nav>
+      <div class="foot-social">
+        <a href="https://www.youtube.com/@NovaSpace-cmr" target="_blank" rel="noopener" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+        <a href="https://www.linkedin.com/in/victor-epombo/" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+      </div>
+      <div class="foot-meta">
+        <div>© 2026 NOVA SPACE — Douala, Cameroon</div>
+        <div class="foot-legal"><a href="../fr/mentions-legales.html">Legal notice (FR)</a></div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <script src="../js/nova.js"></script>
+  <script>
+    function handleContactSubmit(event) {
+      event.preventDefault();
+      const form = event.currentTarget;
+      const formData = new FormData(form);
+      const name = formData.get('name');
+      const email = formData.get('email');
+      const organization = formData.get('organization');
+      const subject = formData.get('subject');
+      const message = formData.get('message');
+      const mailSubject = '[' + subject + '] ' + name;
+      const mailBody = message + '\n\nOrganization: ' + (organization || 'Not provided') + '\nReply to: ' + email;
+      const feedback = document.getElementById('formFeedback');
+      const link = document.createElement('a');
+
+      link.href = 'mailto:victorepombo11@gmail.com?subject=' + encodeURIComponent(mailSubject) + '&body=' + encodeURIComponent(mailBody);
+      link.textContent = 'victorepombo11@gmail.com';
+      link.style.color = 'var(--clr-cyan)';
+      link.style.textDecoration = 'underline';
+
+      feedback.replaceChildren(
+        document.createTextNode('Thank you, ' + name + '. This form does not send automatically. Open your email app using '),
+        link,
+        document.createTextNode(' to send your message.')
+      );
+      feedback.style.display = 'block';
+      feedback.style.background = 'rgba(61, 214, 245, 0.15)';
+      feedback.style.border = '1px solid var(--clr-cyan)';
+      feedback.style.color = 'var(--clr-offwhite)';
+      link.focus();
+    }
+  </script>
+</body>
+</html>
