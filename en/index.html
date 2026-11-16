@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NOVA SPACE — Persevere to the Stars</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="../css/nova.css">
+  <link rel="shortcut icon" href="../assets/novaspace.jpeg" type="image/jpeg">
+</head>
+<body>
+  <div class="grain"></div>
+
+  <!-- NAV EN -->
+  <header>
+    <nav class="navbar">
+      <div class="brand">
+        <a href="index.html" style="display:flex;align-items:center;gap:var(--space-3);">
+          <img src="../assets/novaspace.jpeg" alt="NOVA SPACE" class="brand-logo">
+          <span class="brand-name">NOVA SPACE</span>
+        </a>
+      </div>
+      <div class="navlinks" id="navlinks">
+        <a href="index.html" class="nav-link active">Home</a>
+        <a href="journey.html" class="nav-link">Journey</a>
+        <a href="programs.html" class="nav-link">Programs</a>
+        <a href="team.html" class="nav-link">Team</a>
+        <a href="media.html" class="nav-link">Media</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+      </div>
+      <div class="nav-right">
+        <div class="lang-switcher">
+          <span class="lang-btn active">EN</span>
+          <span class="lang-sep">|</span>
+          <a href="../fr/index.html" class="lang-btn">FR</a>
+        </div>
+        <button class="hamburger" id="hamburger" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <!-- ================= HERO ================= -->
+  <section class="hero">
+    <div class="engineering-grid"></div>
+    <div class="orbit-rings" aria-hidden="true">
+      <svg viewBox="0 0 1000 1000" fill="none" stroke="currentColor">
+        <ellipse cx="500" cy="500" rx="450" ry="200" transform="rotate(-25 500 500)" stroke-width="1.2" stroke-dasharray="4 8" stroke="#3DD6F5" opacity="0.35"/>
+        <ellipse cx="500" cy="500" rx="350" ry="140" transform="rotate(-15 500 500)" stroke-width="1.2" stroke="#3DD6F5" opacity="0.25"/>
+        <circle cx="500" cy="500" r="180" stroke-width="1" stroke="#F2F4F7" opacity="0.15"/>
+      </svg>
+    </div>
+
+    <div class="wrap hero-content">
+      <div class="hero-eyebrow fade-up">
+        DOUALA, CAMEROON · FOUNDED IN 2024
+      </div>
+      <h1>
+        PERSEVERE TO THE STARS.
+      </h1>
+      <p class="hero-lead">
+        NOVA SPACE develops space propulsion technologies in Cameroon, step by step, with proof at every milestone.
+      </p>
+
+      <div class="hero-cta">
+        <a href="journey.html" class="btn-primary">
+          See our journey <i class="fas fa-arrow-right"></i>
+        </a>
+        <a href="programs.html" class="btn-secondary">
+          Discover our programs
+        </a>
+      </div>
+
+      <!-- Real Telemetry Strip -->
+      <div class="hero-telemetry fade-up delay-4">
+        <div class="telemetry-item">
+          <span class="telemetry-label">First Flight</span>
+          <span class="telemetry-value" style="color:var(--clr-cyan);">25.04.2025</span>
+          <span class="status-done"><span class="status-label">ACHIEVED</span></span>
+        </div>
+        <div class="telemetry-item">
+          <span class="telemetry-label">Altitude Reached</span>
+          <span class="telemetry-value" style="color:var(--clr-cyan);">≈ 1 km</span>
+          <span class="status-done"><span class="status-label">ACHIEVED</span></span>
+        </div>
+        <div class="telemetry-item">
+          <span class="telemetry-label">COMORAN Demonstrator</span>
+          <span class="telemetry-value" style="color:var(--clr-flame);">75%</span>
+          <span class="status-ongoing"><span class="status-label"><span class="pulse-dot"></span> IN PROGRESS</span></span>
+        </div>
+        <div class="telemetry-item">
+          <span class="telemetry-label">Headquarters</span>
+          <span class="telemetry-value" style="color:var(--clr-chrome);font-size:var(--fs-base);">Douala, Cameroon</span>
+          <span class="status-objective"><span class="status-label">ENSPD CAMPUS</span></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= THREE FACTS / PROOFS ================= -->
+  <section id="facts" style="border-top:1px solid rgba(201,206,214,0.08);">
+    <div class="wrap">
+      <div class="section-head fade-up">
+        <div class="kicker">Tangible proof</div>
+        <h2>Our milestones are backed by facts.</h2>
+        <p>In aerospace engineering, results speak louder than claims. Every step forward is tested, verified, and transparently documented.</p>
+      </div>
+
+      <div class="grid-3">
+        <div class="card fade-up delay-1">
+          <div class="telemetry-badge" style="margin-bottom:var(--space-4);">
+            <span>PROVEN FLIGHT</span>
+            <span>25.04.2025</span>
+          </div>
+          <h3 style="font-size:var(--fs-xl);margin-bottom:var(--space-3);">PERSEVERANCE Test Flight</h3>
+          <p>
+            PERSEVERANCE successfully launched on April 25, 2025, reaching ~1 km in altitude. It stands as Cameroon's first experimental rocket designed, built, and flown locally with full telemetry transmission.
+          </p>
+        </div>
+
+        <div class="card fade-up delay-2">
+          <div class="telemetry-badge" style="margin-bottom:var(--space-4);border-color:rgba(255,90,31,0.3);background:rgba(255,90,31,0.08);color:var(--clr-flame);">
+            <span>R&D STATUS</span>
+            <span>75% ACTIVE</span>
+          </div>
+          <h3 style="font-size:var(--fs-xl);margin-bottom:var(--space-3);">COMORAN Demonstrator</h3>
+          <p>
+            COMORAN, our electric demonstrator, has completed 75% of its engineering and testing cycle. It validates vital onboard electronic systems and high-precision control avionics.
+          </p>
+        </div>
+
+        <div class="card fade-up delay-3">
+          <div class="telemetry-badge" style="margin-bottom:var(--space-4);">
+            <span>ALLIANCES</span>
+            <span>ACADEMIA & INDUSTRY</span>
+          </div>
+          <h3 style="font-size:var(--fs-xl);margin-bottom:var(--space-3);">Confirmed Partners</h3>
+          <p>
+            We collaborate with premier technical institutions: ENSPD (École Nationale Supérieure Polytechnique de Douala) for academic support, and Air Liquide for industrial gas supply.
+          </p>
+        </div>
+
+        <div class="card fade-up delay-4">
+          <div class="telemetry-badge" style="margin-bottom:var(--space-4);">
+            <span>NATIONAL RECOGNITION</span>
+            <span>2025</span>
+          </div>
+          <h3 style="font-size:var(--fs-xl);margin-bottom:var(--space-3);">JERSIC 2025 — First Prize</h3>
+          <p>
+            NOVA SPACE received first prize at JERSIC 2025, organized by MINRESI. The pitch presented at the event is featured in our media gallery.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= MISSION ================= -->
+  <section id="mission" style="background:var(--clr-surface);border-top:1px solid rgba(201,206,214,0.08);border-bottom:1px solid rgba(201,206,214,0.08);">
+    <div class="wrap">
+      <div class="grid-2" style="align-items:center;">
+        <div class="fade-up">
+          <div class="kicker">Our mission</div>
+          <h2>Mastering space technology, step by step.</h2>
+          <p style="margin-top:var(--space-4);font-size:var(--fs-md);line-height:1.7;">
+            NOVA SPACE is a Cameroonian space startup founded in 2024. We develop propulsion technologies, onboard avionics, and reusability systems with the long-term vision of deploying African satellites from Cameroon.
+          </p>
+          <p style="margin-top:var(--space-4);color:var(--clr-chrome);">
+            Each program is built on incremental validation: completed accomplishments, active development, and long-term horizons are always explicitly distinguished.
+          </p>
+        </div>
+
+        <div class="grid-2 fade-up delay-2" style="gap:var(--space-4);">
+          <div class="card" style="background:var(--clr-night);">
+            <div class="kicker" style="color:var(--clr-cyan);">01 / PROVE</div>
+            <h4 style="font-size:var(--fs-lg);margin-bottom:var(--space-2);">Tangible Prototypes</h4>
+            <p style="font-size:var(--fs-sm);">Validate thermodynamic principles and control electronics on physical hardware before scaling.</p>
+          </div>
+
+          <div class="card" style="background:var(--clr-night);">
+            <div class="kicker" style="color:var(--clr-cyan);">02 / DOCUMENT</div>
+            <h4 style="font-size:var(--fs-lg);margin-bottom:var(--space-2);">Clear Telemetry</h4>
+            <p style="font-size:var(--fs-sm);">Record and share verified data from each launch campaign with our academic and scientific partners.</p>
+          </div>
+
+          <div class="card" style="background:var(--clr-night);grid-column:1/-1;">
+            <div class="kicker" style="color:var(--clr-cyan);">03 / INSPIRE</div>
+            <h4 style="font-size:var(--fs-lg);margin-bottom:var(--space-2);">Catalyze African Aerospace</h4>
+            <p style="font-size:var(--fs-sm);">Demonstrate that world-class space technology can be designed, manufactured, and operated directly from Cameroon.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= PROGRAMS OVERVIEW ================= -->
+  <section id="programs">
+    <div class="wrap">
+      <div class="section-head fade-up">
+        <div class="kicker">Technological roadmap</div>
+        <h2>Five programs building sovereign capability.</h2>
+        <p>From laboratory propulsion testing to long-term orbital ambitions, discover the evolutionary path of our vehicles.</p>
+      </div>
+
+      <div class="grid-3" style="gap:var(--space-6);">
+        <!-- 1. SKY RAIDER -->
+        <div class="card fade-up delay-1">
+          <div class="status-done" style="display:flex;align-items:center;justify-content:space-between;margin-bottom:var(--space-3);">
+            <span class="status-label">ACHIEVED</span>
+            <span class="mono" style="font-size:var(--fs-xs);color:var(--clr-goal);">2024</span>
+          </div>
+          <h3 style="font-size:var(--fs-xl);margin-bottom:var(--space-2);">SKY RAIDER</h3>
+          <p style="font-size:var(--fs-sm);margin-bottom:var(--space-4);color:var(--clr-cyan);">First propulsion demonstrator</p>
+          <p style="font-size:var(--fs-sm);">
+            Laboratory-scale test bench that validated our initial rocket motor chambers and baseline fluidic injection concepts.
+          </p>
+        </div>
+
+        <!-- 2. PERSEVERANCE -->
+        <div class="card fade-up delay-2">
+          <div class="status-done" style="display:flex;align-items:center;justify-content:space-between;margin-bottom:var(--space-3);">
+            <span class="status-label">ACHIEVED</span>
+            <span class="mono" style="font-size:var(--fs-xs);color:var(--clr-goal);">25.04.2025</span>
+          </div>
+          <h3 style="font-size:var(--fs-xl);margin-bottom:var(--space-2);">PERSEVERANCE</h3>
+          <p style="font-size:var(--fs-sm);margin-bottom:var(--space-4);color:var(--clr-cyan);">First flight · ~1 km altitude</p>
+          <p style="font-size:var(--fs-sm);">
+            Cameroon's first experimental rocket to successfully fly and transmit real-time telemetry from launch rail to apogee.
+          </p>
+        </div>
+
+        <!-- 3. COMORAN -->
+        <div class="card fade-up delay-3" style="border-color:rgba(255,90,31,0.3);">
+          <div class="status-ongoing" style="display:flex;align-items:center;justify-content:space-between;margin-bottom:var(--space-3);">
+            <span class="status-label"><span class="pulse-dot"></span> IN PROGRESS — 75%</span>
+            <span class="mono" style="font-size:var(--fs-xs);color:var(--clr-goal);">ACTIVE</span>
+          </div>
+          <h3 style="font-size:var(--fs-xl);margin-bottom:var(--space-2);">COMORAN</h3>
+          <p style="font-size:var(--fs-sm);margin-bottom:var(--space-4);color:var(--clr-flame);">Electric demonstrator</p>
+          <p style="font-size:var(--fs-sm);">
+            Currently at 75% progress. Validates advanced electric actuator control, flight software, and redundant power distribution.
+          </p>
+        </div>
+
+        <!-- 4. CAMAROES -->
+        <div class="card fade-up delay-4">
+          <div class="status-objective" style="display:flex;align-items:center;justify-content:space-between;margin-bottom:var(--space-3);">
+            <span class="status-label">OBJECTIVE</span>
+            <span class="mono" style="font-size:var(--fs-xs);color:var(--clr-goal);">FUTURE</span>
+          </div>
+          <h3 style="font-size:var(--fs-xl);margin-bottom:var(--space-2);">CAMAROES</h3>
+          <p style="font-size:var(--fs-sm);margin-bottom:var(--space-4);color:var(--clr-goal);">Reusability demonstrator</p>
+          <p style="font-size:var(--fs-sm);">
+            Technical research platform dedicated to mastering controlled deceleration and recovery technologies. A technology demonstrator, not a commercial service.
+          </p>
+        </div>
+
+        <!-- 5. Orbital Launcher -->
+        <div class="card fade-up delay-5">
+          <div class="status-objective" style="display:flex;align-items:center;justify-content:space-between;margin-bottom:var(--space-3);">
+            <span class="status-label">OBJECTIVE</span>
+            <span class="mono" style="font-size:var(--fs-xs);color:var(--clr-goal);">LONG-TERM</span>
+          </div>
+          <h3 style="font-size:var(--fs-xl);margin-bottom:var(--space-2);">Orbital Launcher</h3>
+          <p style="font-size:var(--fs-sm);margin-bottom:var(--space-4);color:var(--clr-goal);">Long-term horizon</p>
+          <p style="font-size:var(--fs-sm);">
+            The strategic destination of NOVA SPACE: delivering independent orbital access for African small satellites directly from Cameroon.
+          </p>
+        </div>
+
+        <!-- Callout to full programs page -->
+        <div class="card fade-up delay-5" style="display:flex;flex-direction:column;justify-content:center;align-items:flex-start;background:linear-gradient(135deg, var(--clr-surface) 0%, rgba(61,214,245,0.06) 100%);">
+          <h3 style="font-size:var(--fs-xl);margin-bottom:var(--space-3);">Full Technical Specs</h3>
+          <p style="font-size:var(--fs-sm);margin-bottom:var(--space-6);">Explore capabilities, telemetry metrics, and CAD models for each program.</p>
+          <a href="programs.html" class="btn-secondary" style="width:100%;justify-content:center;">
+            View all programs <i class="fas fa-arrow-right"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= JOURNEY TEASER ================= -->
+  <section id="journey-preview" style="background:var(--clr-surface);position:relative;overflow:hidden;">
+    <div class="wrap">
+      <div class="grid-2" style="align-items:center;gap:var(--space-12);">
+        <div class="fade-up">
+          <div class="kicker">Chronology</div>
+          <h2>From initial idea to maiden flight.</h2>
+          <p style="margin-top:var(--space-4);font-size:var(--fs-md);line-height:1.7;">
+            Two years of rigorous perseverance: mathematical simulations, component testing, manufacturing hurdles, and the historic flight of PERSEVERANCE on April 25, 2025.
+          </p>
+          <div style="margin-top:var(--space-8);">
+            <a href="journey.html" class="btn-primary">
+              Explore the timeline <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+
+        <div class="fade-up delay-2">
+          <div style="border-radius:var(--radius-md);overflow:hidden;border:1px solid rgba(201,206,214,0.12);box-shadow:var(--shadow-md);">
+            <img src="../assets/working_duo.jpeg" alt="NOVA SPACE engineering duo at work" style="width:100%;height:380px;object-fit:cover;">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= TEAM PREVIEW ================= -->
+  <section id="team">
+    <div class="wrap">
+      <div class="section-head fade-up">
+        <div class="kicker">Leadership</div>
+        <h2>Engineers pioneering African aerospace.</h2>
+        <p>A focused multidisciplinary engineering team founded in Douala, Cameroon.</p>
+      </div>
+
+      <div class="grid-3" style="gap:var(--space-8);">
+        <!-- Victor -->
+        <article class="card fade-up delay-1" style="display:flex;flex-direction:column;">
+          <div style="border-radius:var(--radius-sm);overflow:hidden;margin-bottom:var(--space-4);aspect-ratio:4/5;background:var(--clr-night);">
+            <img src="../assets/Victor.jpeg" alt="Victor EPOMBO EBOKO DINDE" style="width:100%;height:100%;object-fit:cover;">
+          </div>
+          <h3 style="font-size:var(--fs-lg);margin-bottom:var(--space-1);">Victor EPOMBO EBOKO DINDE</h3>
+          <p style="font-size:var(--fs-xs);font-family:var(--font-mono);color:var(--clr-cyan);margin-bottom:var(--space-3);">FOUNDER & CEO</p>
+          <p style="font-size:var(--fs-sm);flex:1;">
+            Designed and launched PERSEVERANCE, Cameroon's first experimental rocket. Electrical Engineering and Intelligent Systems (GESI) scholar at ENSPD.
+          </p>
+        </article>
+
+        <!-- Benoit -->
+        <article class="card fade-up delay-2" style="display:flex;flex-direction:column;">
+          <div style="border-radius:var(--radius-sm);overflow:hidden;margin-bottom:var(--space-4);aspect-ratio:4/5;background:var(--clr-night);">
+            <img src="../assets/krypto_cto.jpeg" alt="ATANGANA FOUDA V. BENOIT" style="width:100%;height:100%;object-fit:cover;">
+          </div>
+          <h3 style="font-size:var(--fs-lg);margin-bottom:var(--space-1);">ATANGANA FOUDA V. BENOIT</h3>
+          <p style="font-size:var(--fs-xs);font-family:var(--font-mono);color:var(--clr-cyan);margin-bottom:var(--space-3);">CTO & STRATEGIC LEAD</p>
+          <p style="font-size:var(--fs-sm);flex:1;">
+            Electrical Engineering and Intelligent Systems (GESI) engineer at ENSPD Douala. Directs technical roadmap, avionics modeling, and system architectures.
+          </p>
+        </article>
+
+        <!-- Laeticia -->
+        <article class="card fade-up delay-3" style="display:flex;flex-direction:column;">
+          <div style="border-radius:var(--radius-sm);overflow:hidden;margin-bottom:var(--space-4);aspect-ratio:4/5;background:var(--clr-night);">
+            <img src="../assets/laeti.jpeg" alt="NKUIDJEU TSAMI Laeticia Candice" style="width:100%;height:100%;object-fit:cover;">
+          </div>
+          <h3 style="font-size:var(--fs-lg);margin-bottom:var(--space-1);">NKUIDJEU TSAMI Laeticia Candice</h3>
+          <p style="font-size:var(--fs-xs);font-family:var(--font-mono);color:var(--clr-cyan);margin-bottom:var(--space-3);">ENERGY & PROPULSION ENGINEER</p>
+          <p style="font-size:var(--fs-sm);flex:1;">
+            Specializes in thermodynamic propulsion analysis, propellant efficiency optimization, and thermal barrier verification.
+          </p>
+        </article>
+      </div>
+
+      <div style="text-align:center;margin-top:var(--space-12);" class="fade-up">
+        <a href="team.html" class="btn-secondary">
+          Meet the complete team <i class="fas fa-arrow-right"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= PARTNERS ================= -->
+  <section id="partners" style="border-top:1px solid rgba(201,206,214,0.08);background:var(--clr-surface);">
+    <div class="wrap">
+      <div class="section-head fade-up">
+        <div class="kicker">Institutional support</div>
+        <h2>Confirmed Partners</h2>
+        <p>We work in trusted alignment with certified academic and industrial leaders.</p>
+      </div>
+
+      <div class="grid-2 fade-up delay-1" style="gap:var(--space-6);">
+        <div class="card" style="background:var(--clr-night);">
+          <div class="telemetry-badge" style="margin-bottom:var(--space-3);">ACADEMIC PARTNER</div>
+          <h3 style="font-size:var(--fs-xl);margin-bottom:var(--space-2);">ENSPD</h3>
+          <p style="font-size:var(--fs-sm);color:var(--clr-chrome);margin-bottom:var(--space-3);">École Nationale Supérieure Polytechnique de Douala</p>
+          <p style="font-size:var(--fs-sm);">
+            Academic collaboration agreement providing engineering laboratory access, scientific consultation, and test site facilities under the direction of Pr R. M. MOUANGUE.
+          </p>
+        </div>
+
+        <div class="card" style="background:var(--clr-night);">
+          <div class="telemetry-badge" style="margin-bottom:var(--space-3);">INDUSTRIAL PARTNER</div>
+          <h3 style="font-size:var(--fs-xl);margin-bottom:var(--space-2);">Air Liquide</h3>
+          <p style="font-size:var(--fs-sm);color:var(--clr-chrome);margin-bottom:var(--space-3);">Global Leader in Industrial Gases</p>
+          <p style="font-size:var(--fs-sm);">
+            Industrial partnership ensuring high-purity industrial gases and specialized pressurization fluids required for rocket propulsion testing.
+          </p>
+        </div>
+      </div>
+
+      <p style="font-family:var(--font-mono);font-size:var(--fs-xs);color:var(--clr-goal);margin-top:var(--space-8);text-align:center;">
+        * Note: Only partners with finalized, formal collaboration agreements are displayed.
+      </p>
+    </div>
+  </section>
+
+  <!-- ================= FINAL CTA ================= -->
+  <section class="page-top" style="padding-top:var(--space-24);padding-bottom:var(--space-32);text-align:center;position:relative;">
+    <div class="wrap" style="max-width:720px;">
+      <div class="kicker fade-up" style="justify-content:center;">Collaborate</div>
+      <h2 class="fade-up delay-1" style="font-size:clamp(var(--fs-2xl), 5vw, var(--fs-4xl));margin-bottom:var(--space-4);">Let's work together.</h2>
+      <p class="fade-up delay-2" style="font-size:var(--fs-md);margin-inline:auto;margin-bottom:var(--space-8);">
+        Partners, academic institutions, media representatives, and passionate aerospace engineers — we welcome collaboration.
+      </p>
+      <div class="fade-up delay-3">
+        <a href="contact.html" class="btn-primary">
+          Write to NOVA SPACE <i class="fas fa-arrow-right"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER EN -->
+  <footer>
+    <div class="wrap foot-layout">
+      <div class="foot-brand">
+        <img src="../assets/novaspace.jpeg" alt="NOVA SPACE">
+        <div>
+          <span class="brand-name">NOVA SPACE</span>
+          <div class="foot-tagline">PERSEVERE TO THE STARS.</div>
+        </div>
+      </div>
+      <nav class="foot-nav">
+        <a href="journey.html">Journey</a>
+        <a href="programs.html">Programs</a>
+        <a href="team.html">Team</a>
+        <a href="media.html">Media</a>
+        <a href="contact.html">Contact</a>
+        <a href="legal.html">Legal</a>
+      </nav>
+      <div class="foot-social">
+        <a href="https://www.youtube.com/@NovaSpace-cmr" target="_blank" rel="noopener" aria-label="YouTube">
+          <i class="fab fa-youtube"></i>
+        </a>
+        <a href="https://www.linkedin.com/in/victor-epombo/" target="_blank" rel="noopener" aria-label="LinkedIn">
+          <i class="fab fa-linkedin"></i>
+        </a>
+      </div>
+      <div class="foot-meta">
+        <div>© 2026 NOVA SPACE — Douala, Cameroon</div>
+        <div class="foot-legal"><a href="legal.html">Legal notice</a></div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <script src="../js/nova.js"></script>
+</body>
+</html>

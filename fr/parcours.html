@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Parcours — NOVA SPACE</title>
+  <meta name="description" content="Découvrez la chronologie de NOVA SPACE : de la fondation à Douala au vol historique de PERSEVERANCE et aux jalons technologiques futurs.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="../css/nova.css">
+  <link rel="shortcut icon" href="../assets/novaspace.jpeg" type="image/jpeg">
+  <style>
+    /* Styles spécifiques pour les filtres et l'interactivité de la chronologie */
+    .timeline-filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-3);
+      margin-bottom: var(--space-12);
+      align-items: center;
+    }
+    .filter-btn {
+      font-family: var(--font-mono);
+      font-size: var(--fs-xs);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: var(--space-2) var(--space-4);
+      border-radius: var(--radius-pill);
+      border: 1px solid rgba(201, 206, 214, 0.2);
+      background: var(--clr-surface);
+      color: var(--clr-chrome);
+      cursor: pointer;
+      transition: all var(--dur-std) var(--ease);
+    }
+    .filter-btn:hover {
+      border-color: var(--clr-cyan);
+      color: var(--clr-offwhite);
+      transform: translateY(-1px);
+    }
+    .filter-btn.active {
+      background: rgba(61, 214, 245, 0.15);
+      border-color: var(--clr-cyan);
+      color: var(--clr-cyan);
+      box-shadow: var(--shadow-cyan);
+    }
+    .timeline-card {
+      background: var(--clr-surface);
+      border: 1px solid rgba(201, 206, 214, 0.1);
+      border-radius: var(--radius-md);
+      padding: var(--space-6);
+      transition: all var(--dur-std) var(--ease);
+      cursor: pointer;
+    }
+    .timeline-card:hover {
+      border-color: rgba(61, 214, 245, 0.35);
+      box-shadow: var(--shadow-md);
+      transform: translateY(-2px);
+    }
+    .timeline-item.ongoing .timeline-card:hover {
+      border-color: rgba(255, 90, 31, 0.4);
+      box-shadow: var(--shadow-flame);
+    }
+    .timeline-item.objective .timeline-card {
+      border-style: dashed;
+    }
+    .timeline-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: var(--space-4);
+      flex-wrap: wrap;
+      margin-bottom: var(--space-3);
+    }
+    .timeline-badge-status {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      padding: 3px 8px;
+      border-radius: var(--radius-sm);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-weight: 500;
+    }
+    .badge-done {
+      color: var(--clr-cyan);
+      background: rgba(61, 214, 245, 0.1);
+      border: 1px solid rgba(61, 214, 245, 0.3);
+    }
+    .badge-ongoing {
+      color: var(--clr-flame);
+      background: rgba(255, 90, 31, 0.1);
+      border: 1px solid rgba(255, 90, 31, 0.3);
+    }
+    .badge-objective {
+      color: var(--clr-goal);
+      background: rgba(124, 133, 148, 0.1);
+      border: 1px dashed rgba(124, 133, 148, 0.4);
+    }
+    .timeline-media {
+      margin-top: var(--space-4);
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+      border: 1px solid rgba(201, 206, 214, 0.1);
+      max-width: 520px;
+    }
+    .timeline-media img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      display: block;
+      transition: transform var(--dur-slow) var(--ease);
+    }
+    .timeline-media--portrait img {
+      width: auto;
+      height: auto;
+      max-width: 100%;
+      max-height: 420px;
+      margin-inline: auto;
+      object-fit: contain;
+    }
+    .timeline-gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 180px), 1fr));
+      gap: var(--space-3);
+      margin-top: var(--space-4);
+    }
+    .timeline-gallery img {
+      width: 100%;
+      height: 180px;
+      object-fit: contain;
+      background: var(--clr-night);
+      border: 1px solid rgba(201, 206, 214, 0.1);
+      border-radius: var(--radius-sm);
+    }
+    .timeline-card:hover .timeline-media img {
+      transform: scale(1.03);
+    }
+    .timeline-media-caption {
+      padding: var(--space-2) var(--space-3);
+      font-family: var(--font-mono);
+      font-size: var(--fs-xs);
+      color: var(--clr-goal);
+      background: rgba(7, 9, 13, 0.6);
+      border-top: 1px solid rgba(201, 206, 214, 0.08);
+    }
+    .timeline-details {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height var(--dur-slow) var(--ease), opacity var(--dur-std) var(--ease);
+      opacity: 0;
+    }
+    .timeline-card.expanded .timeline-details {
+      max-height: 500px;
+      opacity: 1;
+      margin-top: var(--space-4);
+      padding-top: var(--space-4);
+      border-top: 1px solid rgba(201, 206, 214, 0.1);
+    }
+    .timeline-toggle-hint {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: var(--space-3);
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--clr-cyan);
+      letter-spacing: 0.05em;
+    }
+    .timeline-toggle-hint i {
+      transition: transform var(--dur-std) var(--ease);
+    }
+    .timeline-card.expanded .timeline-toggle-hint i {
+      transform: rotate(180deg);
+    }
+    .telemetry-mini-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+      gap: var(--space-3);
+      margin-top: var(--space-3);
+    }
+    .telemetry-mini-item {
+      background: rgba(7, 9, 13, 0.5);
+      padding: var(--space-2) var(--space-3);
+      border-radius: var(--radius-sm);
+      border-left: 2px solid var(--clr-cyan);
+    }
+    .telemetry-mini-item.flame {
+      border-left-color: var(--clr-flame);
+    }
+  </style>
+</head>
+<body>
+  <div class="grain"></div>
+  <header>
+    <nav class="navbar">
+      <div class="brand">
+        <a href="index.html" style="display:flex;align-items:center;gap:var(--space-3);text-decoration:none;">
+          <img src="../assets/novaspace.jpeg" alt="NOVA SPACE" class="brand-logo">
+          <span class="brand-name">NOVA SPACE</span>
+        </a>
+      </div>
+      <div class="navlinks" id="navlinks">
+        <a href="index.html" class="nav-link">Accueil</a>
+        <a href="parcours.html" class="nav-link active">Parcours</a>
+        <a href="programmes.html" class="nav-link">Programmes</a>
+        <a href="equipe.html" class="nav-link">Équipe</a>
+        <a href="medias.html" class="nav-link">Médias</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+      </div>
+      <div class="nav-right">
+        <div class="lang-switcher">
+          <a href="../en/journey.html" class="lang-btn">EN</a>
+          <span class="lang-sep">|</span>
+          <span class="lang-btn active">FR</span>
+        </div>
+        <button class="hamburger" id="hamburger" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <main class="page-top">
+    <!-- Header Section -->
+    <section style="padding-top: var(--space-8); padding-bottom: var(--space-12);">
+      <div class="engineering-grid"></div>
+      <div class="wrap">
+        <div class="section-head fade-up">
+          <span class="kicker">Notre parcours</span>
+          <h1>De l'idée au premier vol.</h1>
+          <p>Chaque jalon est une preuve. Réalisé, en cours ou objectif — toujours clairement distingué.</p>
+        </div>
+
+        <!-- Filtres interactifs -->
+        <div class="timeline-filters fade-up delay-1" role="toolbar" aria-label="Filtrer les jalons">
+          <button class="filter-btn active" data-filter="all">Tous (12)</button>
+          <button class="filter-btn" data-filter="done"><span class="star-4" style="width:8px;height:8px;margin-right:4px;"></span> Réalisé (8)</button>
+          <button class="filter-btn" data-filter="ongoing"><span class="pulse-dot" style="width:6px;height:6px;margin-right:6px;"></span> En cours (1)</button>
+          <button class="filter-btn" data-filter="objective"><i class="far fa-circle" style="font-size:9px;margin-right:4px;"></i> Objectif (3)</button>
+        </div>
+
+        <!-- Ligne chronologique -->
+        <div class="timeline" id="timelineList">
+
+          <!-- Jalon 1 -->
+          <div class="timeline-item done fade-up" data-status="done">
+            <div class="timeline-card" onclick="toggleTimelineCard(this)">
+              <div class="timeline-card-header">
+                <div>
+                  <div class="timeline-date">2024 · DOUALA, CAMEROUN</div>
+                  <h3 class="timeline-title">1. Fondation de NOVA SPACE</h3>
+                </div>
+                <span class="timeline-badge-status badge-done"><i class="fas fa-check"></i> Réalisé</span>
+              </div>
+              <p class="timeline-desc">Création de la startup à Douala par une équipe d'ingénieurs camerounais. Lancement des premiers travaux d'ingénierie et de recherche & développement en propulsion spatiale.</p>
+              <div class="timeline-media timeline-media--portrait">
+                <img src="../assets/cofounders.jpeg" alt="Fondateurs de NOVA SPACE" loading="lazy">
+                <div class="timeline-media-caption">Les cofondateurs lors des premières sessions de travail à Douala</div>
+              </div>
+              <div class="timeline-toggle-hint">
+                <span>Détails du jalon</span> <i class="fas fa-chevron-down"></i>
+              </div>
+              <div class="timeline-details">
+                <p>Création d'une infrastructure de calcul et d'expérimentation locale. Identification des besoins régionaux en technologies spatiales souveraines et définition de la feuille de route incrémentale.</p>
+                <div class="telemetry-mini-grid">
+                  <div class="telemetry-mini-item">
+                    <div class="telemetry-label">Implantation</div>
+                    <div class="mono" style="font-size:13px;color:var(--clr-offwhite);">Douala, CMR</div>
+                  </div>
+                  <div class="telemetry-mini-item">
+                    <div class="telemetry-label">Domaine</div>
+                    <div class="mono" style="font-size:13px;color:var(--clr-offwhite);">R&D Aérospatiale</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Jalon 2 -->
+          <div class="timeline-item done fade-up" data-status="done">
+            <div class="timeline-card" onclick="toggleTimelineCard(this)">
+              <div class="timeline-card-header">
+                <div>
+                  <div class="timeline-date">2024 · VALIDATION TECHNIQUE</div>
+                  <h3 class="timeline-title">2. SKY RAIDER</h3>
+                </div>
+                <span class="timeline-badge-status badge-done"><i class="fas fa-check"></i> Réalisé</span>
+              </div>
+              <p class="timeline-desc">Premier démonstrateur de propulsion. Validation expérimentale des concepts physiques fondamentaux, de la chambre de combustion et des bancs d'essais.</p>
+              <div class="timeline-toggle-hint">
+                <span>Détails du jalon</span> <i class="fas fa-chevron-down"></i>
+              </div>
+              <div class="timeline-details">
+                <p>SKY RAIDER a permis de consolider les équations thermodynamiques et d'éprouver les protocoles de sécurité pour la manipulation des fluides sous pression.</p>
+                <div class="telemetry-mini-grid">
+                  <div class="telemetry-mini-item">
+                    <div class="telemetry-label">Statut jalon</div>
+                    <div class="mono" style="font-size:13px;color:var(--clr-cyan);">Validé</div>
+                  </div>
+                  <div class="telemetry-mini-item">
+                    <div class="telemetry-label">Livrables</div>
+                    <div class="mono" style="font-size:13px;color:var(--clr-offwhite);">Bancs d'essais</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Jalon 3 -->
+          <div class="timeline-item done fade-up" data-status="done">
+            <div class="timeline-card" onclick="toggleTimelineCard(this)">
+              <div class="timeline-card-header">
+                <div>
+                  <div class="timeline-date">2024 · INGÉNIERIE SYSTÈME</div>
+                  <h3 class="timeline-title">3. PERSEVERANCE — Conception</h3>
+                </div>
+                <span class="timeline-badge-status badge-done"><i class="fas fa-check"></i> Réalisé</span>
+              </div>
+              <p class="timeline-desc">Conception complète d'une fusée expérimentale : propulsion liquide intégrée, calculateurs de bord, baie d'électronique embarquée et chaîne de télémétrie UHF/VHF.</p>
+              <div class="timeline-media">
+                <img src="../assets/perseverance-preparation-telemetrie.jpeg" alt="Préparation de la télémétrie de PERSEVERANCE" loading="lazy">
+                <div class="timeline-media-caption">Vérification de la chaîne de télémétrie et des capteurs de bord</div>
+              </div>
+              <div class="timeline-toggle-hint">
+                <span>Détails du jalon</span> <i class="fas fa-chevron-down"></i>
+              </div>
+              <div class="timeline-details">
+                <p>Intégration mécatronique dense dans un corps aérodynamique adapté aux contraintes thermiques et vibratoires du vol atmosphérique.</p>
+                <div class="telemetry-mini-grid">
+                  <div class="telemetry-mini-item">
+                    <div class="telemetry-label">Propulsion</div>
+                    <div class="mono" style="font-size:13px;color:var(--clr-cyan);">Liquide interne</div>
+                  </div>
+                  <div class="telemetry-mini-item">
+                    <div class="telemetry-label">Architecture</div>
+                    <div class="mono" style="font-size:13px;color:var(--clr-offwhite);">Sur mesure</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Jalon 4 -->
+          <div class="timeline-item done fade-up" data-status="done">
+            <div class="timeline-card" onclick="toggleTimelineCard(this)">
+              <div class="timeline-card-header">
+                <div>
+                  <div class="timeline-date">2024 · ALLIANCE ACADÉMIQUE</div>
+                  <h3 class="timeline-title">4. Partenariat ENSPD</h3>
+                </div>
+                <span class="timeline-badge-status badge-done"><i class="fas fa-check"></i> Réalisé</span>
+              </div>
+              <p class="timeline-desc">Accord de collaboration scientifique et technique avec l'École Nationale Supérieure Polytechnique de Douala (ENSPD). Accès aux laboratoires et synergie de recherche appliquée.</p>
+              <div class="timeline-toggle-hint">
+                <span>Détails du jalon</span> <i class="fas fa-chevron-down"></i>
+              </div>
+              <div class="timeline-details">
+                <p>Collaboration étroite avec le département Génie Électrique et Systèmes Intelligents (GESI) et soutien institutionnel de la direction de l'école pour encadrer les essais de haute technicité.</p>
+                <div class="telemetry-mini-grid">
+                  <div class="telemetry-mini-item">
+                    <div class="telemetry-label">Partenaire</div>
+                    <div class="mono" style="font-size:13px;color:var(--clr-cyan);">ENSPD Douala</div>
+                  </div>
+                  <div class="telemetry-mini-item">
+                    <div class="telemetry-label">Cadre</div>
+                    <div class="mono" style="font-size:13px;color:var(--clr-offwhite);">Convention R&D</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Jalon 5 -->
+          <div class="timeline-item done fade-up" data-status="done">
+            <div class="timeline-card" onclick="toggleTimelineCard(this)">
+              <div class="timeline-card-header">
+                <div>
+                  <div class="timeline-date">2025 · SOUTIEN INDUSTRIEL</div>
+                  <h3 class="timeline-title">5. Partenariat Air Liquide</h3>
+                </div>
+                <span class="timeline-badge-status badge-done"><i class="fas fa-check"></i> Réalisé</span>
+              </div>
+              <p class="timeline-desc">Accord industriel avec Air Liquide pour la fourniture de gaz industriels et fluides nécessaires aux bancs de pressurisation et aux tests moteurs.</p>
+              <div class="timeline-toggle-hint">
+                <span>Détails du jalon</span> <i class="fas fa-chevron-down"></i>
+              </div>
+              <div class="timeline-details">
+                <p>Sécurisation des approvisionnements en gaz de qualité industrielle, condition sine qua non de la répétabilité et de la sécurité des bancs de test en environnement contrôlé.</p>
+                <div class="telemetry-mini-grid">
+                  <div class="telemetry-mini-item">
+                    <div class="telemetry-label">Partenaire</div>
+                    <div class="mono" style="font-size:13px;color:var(--clr-cyan);">Air Liquide</div>
+                  </div>
+                  <div class="telemetry-mini-item">
+                    <div class="telemetry-label">Rôle</div>
+                    <div class="mono" style="font-size:13px;color:var(--clr-offwhite);">Gaz industriels</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Jalon 6 -->
+          <div class="timeline-item done fade-up" data-status="done">
+            <div class="timeline-card" onclick="toggleTimelineCard(this)" style="border-color: rgba(61, 214, 245, 0.4);">
+              <div class="timeline-card-header">
+                <div>
+                  <div class="timeline-date" style="color:var(--clr-cyan);">25 AVRIL 2025 · JALON HISTORIQUE</div>
+                  <h3 class="timeline-title" style="color:var(--clr-offwhite);">6. PERSEVERANCE — Vol d'essai</h3>
+                </div>
+                <span class="timeline-badge-status badge-done"><i class="fas fa-rocket"></i> Réalisé · Données réelles</span>
+              </div>
+              <p class="timeline-desc">Premier lancement réussi d'une fusée expérimentale entièrement conçue et réalisée au Cameroun. Altitude atteinte : ≈ 1 km. Télémétrie transmise en temps réel. Soutien officiel du Pr R. M. MOUANGUE, Directeur de l'ENSPD.</p>
+              <div class="timeline-media">
+                <img src="../assets/rampe_perseverance.jpeg" alt="PERSEVERANCE sur la rampe de lancement" loading="lazy">
+                <div class="timeline-media-caption">PERSEVERANCE sur sa rampe de tir avant le décollage du 25 avril 2025</div>
+              </div>
+              <div class="timeline-toggle-hint">
+                <span>Détails de vol & télémétrie</span> <i class="fas fa-chevron-down"></i>
+              </div>
+              <div class="timeline-details">
+                <p>Le vol d'essai a validé l'allumage du moteur à ergols liquides, la stabilité aérodynamique sur rampe, la résistance structurale et l'acquisition continue du signal télémétrique sol-bord.</p>
+                <div class="telemetry-mini-grid">
+                  <div class="telemetry-mini-item">
+                    <div class="telemetry-label">Date de vol</div>
+                    <div class="mono" style="font-size:13px;color:var(--clr-cyan);">25.04.2025</div>
+                  </div>
+                  <div class="telemetry-mini-item">
+                    <div class="telemetry-label">Altitude pic</div>
+                    <div class="mono" style="font-size:13px;color:var(--clr-cyan);">≈ 1 km</div>
+                  </div>
+                  <div class="telemetry-mini-item">
+                    <div class="telemetry-label">Télémétrie</div>
+                    <div class="mono" style="font-size:13px;color:var(--clr-cyan);">Transmise</div>
+                  </div>
+                  <div class="telemetry-mini-item">
+                    <div class="telemetry-label">Soutien ENSPD</div>
+                    <div class="mono" style="font-size:13px;color:var(--clr-cyan);">Pr MOUANGUE</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Jalon 7 -->
+          <div class="timeline-item done fade-up" data-status="done">
+            <div class="timeline-card" onclick="toggleTimelineCard(this)">
+              <div class="timeline-card-header">
+                <div>
+                  <div class="timeline-date">2025 · DISTINCTION NATIONALE</div>
+                  <h3 class="timeline-title">7. Premier prix JERSIC 2025</h3>
+                </div>
+                <span class="timeline-badge-status badge-done"><i class="fas fa-award"></i> Réalisé</span>
+              </div>
+              <p class="timeline-desc">NOVA SPACE a obtenu le premier prix JERSIC 2025, organisé par le MINRESI. La photographie montre le pitch du projet présenté à cette occasion.</p>
+              <div class="timeline-media timeline-media--portrait">
+                <img src="../assets/presentation_JERSIC2025.jpeg" alt="Pitch de NOVA SPACE au JERSIC 2025 organisé par le MINRESI" loading="lazy">
+                <div class="timeline-media-caption">Pitch de NOVA SPACE au JERSIC 2025 · MINRESI</div>
+              </div>
+              <div class="timeline-toggle-hint">
+                <span>Détails du jalon</span> <i class="fas fa-chevron-down"></i>
+              </div>
+              <div class="timeline-details">
+                <p>Cette distinction récompense la présentation du projet NOVA SPACE dans le cadre du JERSIC 2025.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Jalon 8 -->
+          <div class="timeline-item done fade-up" data-status="done">
+            <div class="timeline-card" onclick="toggleTimelineCard(this)">
+              <div class="timeline-card-header">
+                <div>
+                  <div class="timeline-date">2026 · DISTINCTION NATIONALE</div>
+                  <h3 class="timeline-title">8. ICT Week 2026 — 6e place</h3>
+                </div>
+                <span class="timeline-badge-status badge-done"><i class="fas fa-award"></i> Réalisé</span>
+              </div>
+              <p class="timeline-desc">Reconnaissance de l'audace technologique et de la rigueur d'ingénierie de NOVA SPACE au concours de l'ICT Week 2026.</p>
+              <div class="timeline-media">
+                <img src="../assets/Prize ICT Week 2026_6th place.jpeg" alt="Prix ICT Week 2026" loading="lazy">
+                <div class="timeline-media-caption">Attestation de la 6e place obtenue lors de l'ICT Week 2026</div>
+              </div>
+              <div class="timeline-toggle-hint">
+                <span>Détails du jalon</span> <i class="fas fa-chevron-down"></i>
+              </div>
+              <div class="timeline-details">
+                <p>Présentation du programme de propulsion spatiale devant un jury d'experts technologiques et institutionnels du secteur numérique et industriel camerounais.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Jalon 8 -->
+          <div class="timeline-item ongoing fade-up" data-status="ongoing">
+            <div class="timeline-card" onclick="toggleTimelineCard(this)" style="border-left: 3px solid var(--clr-flame);">
+              <div class="timeline-card-header">
+                <div>
+                  <div class="timeline-date" style="color:var(--clr-flame);">2026 · EN COURS (75 %)</div>
+                  <h3 class="timeline-title">9. COMORAN — Démonstrateur électrique</h3>
+                </div>
+                <span class="timeline-badge-status badge-ongoing"><span class="pulse-dot"></span> En cours · 75 %</span>
+              </div>
+              <p class="timeline-desc">Conception, prototypage et assemblage actif du démonstrateur électrique. Programme validant les asservissements et l'électronique de puissance avancée. Actuellement à 75 % d'avancement — jamais présenté comme achevé.</p>
+              <div class="timeline-gallery" aria-label="Visuels du démonstrateur COMORAN">
+                <img src="../assets/structure_mecanique_comoran.jpeg" alt="Structure mécanique du démonstrateur COMORAN" loading="lazy">
+                <img src="../assets/comoran_.jpeg" alt="Structure de COMORAN en atelier" loading="lazy">
+                <img src="../assets/modelisation 3D comoran.jpeg" alt="Modélisation 3D de COMORAN" loading="lazy">
+                <img src="../assets/modele 3D_2_COMORAN.jpeg" alt="Modèle 3D du démonstrateur COMORAN" loading="lazy">
+              </div>
+              <div style="margin-top: var(--space-4);">
+                <div class="progress-bar-wrap">
+                  <div class="progress-bar-label">
+                    <span>Avancement du programme</span>
+                    <span class="mono" style="color:var(--clr-flame);">75 %</span>
+                  </div>
+                  <div class="progress-bar">
+                    <div class="progress-fill animated" style="transform: scaleX(0.75); background: linear-gradient(90deg, var(--clr-flame), rgba(255,90,31,0.6));"></div>
+                  </div>
+                </div>
+              </div>
+              <div class="timeline-toggle-hint">
+                <span>Détails des tests</span> <i class="fas fa-chevron-down"></i>
+              </div>
+              <div class="timeline-details">
+                <p>Les 25 % restants concernent la fiabilisation des boucles de rétroaction en temps réel et la qualification thermique sous contraintes maximales d'intégration.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Jalon 9 -->
+          <div class="timeline-item objective fade-up" data-status="objective">
+            <div class="timeline-card" onclick="toggleTimelineCard(this)">
+              <div class="timeline-card-header">
+                <div>
+                  <div class="timeline-date">HORIZON 2026-2027 · ÉTAPE SUIVANTE</div>
+                  <h3 class="timeline-title">10. COMORAN — Finalisation</h3>
+                </div>
+                <span class="timeline-badge-status badge-objective"><i class="far fa-clock"></i> Objectif</span>
+              </div>
+              <p class="timeline-desc">Campagne d'essais au banc complet et qualification fonctionnelle globale du démonstrateur électrique COMORAN.</p>
+              <div class="timeline-toggle-hint">
+                <span>Détails de l'objectif</span> <i class="fas fa-chevron-down"></i>
+              </div>
+              <div class="timeline-details">
+                <p>Validation finale de la résistance aux vibrations et des protocoles de communication sécurisés avant passage à l'étape suivante.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Jalon 10 -->
+          <div class="timeline-item objective fade-up" data-status="objective">
+            <div class="timeline-card" onclick="toggleTimelineCard(this)">
+              <div class="timeline-card-header">
+                <div>
+                  <div class="timeline-date">HORIZON FUTUR · RECHERCHE TECHNOLOGIQUE</div>
+                  <h3 class="timeline-title">11. CAMAROES — Démonstrateur de réutilisabilité</h3>
+                </div>
+                <span class="timeline-badge-status badge-objective"><i class="far fa-compass"></i> Objectif</span>
+              </div>
+              <p class="timeline-desc">Développement du démonstrateur de réutilisabilité. CAMAROES est une étape de recherche technique axée sur la récupération et la rentrée contrôlée, et non un lanceur commercial.</p>
+              <div class="timeline-toggle-hint">
+                <span>Clarification éditoriale</span> <i class="fas fa-chevron-down"></i>
+              </div>
+              <div class="timeline-details">
+                <p style="font-size: var(--fs-xs); color: var(--clr-goal);">Note : CAMAROES constitue un banc technologique dédié à la dynamique de vol réutilisable. Ce n'est ni un lanceur en production ni un service commercial.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Jalon 11 -->
+          <div class="timeline-item objective fade-up" data-status="objective">
+            <div class="timeline-card" onclick="toggleTimelineCard(this)">
+              <div class="timeline-card-header">
+                <div>
+                  <div class="timeline-date">HORIZON LONG TERME · AMBITION NATIONALE</div>
+                  <h3 class="timeline-title">12. Lanceur orbital</h3>
+                </div>
+                <span class="timeline-badge-status badge-objective"><i class="fas fa-globe-africa"></i> Objectif long terme</span>
+              </div>
+              <p class="timeline-desc">Accès autonome à l'orbite pour des charges utiles et satellites africains depuis le Cameroun. Horizon ambitieux fondé sur la capitalisation de toutes les étapes précédentes.</p>
+              <div class="timeline-toggle-hint">
+                <span>Horizon prospectif</span> <i class="fas fa-chevron-down"></i>
+              </div>
+              <div class="timeline-details">
+                <p style="font-size: var(--fs-xs); color: var(--clr-goal);">Note : Aucune date prématurée ni engagement commercial n'est communiqué à ce stade. L'objectif demeure une vision directrice guidant l'ensemble de notre R&D.</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Call to Action bas de page -->
+        <div style="margin-top: var(--space-24); text-align: center;" class="fade-up">
+          <div class="card" style="display: inline-block; max-width: 640px; padding: var(--space-12);">
+            <span class="kicker" style="justify-content: center;">Perspective</span>
+            <h2 style="font-size: var(--fs-2xl); margin-bottom: var(--space-4);">Explorez nos cinq programmes</h2>
+            <p style="margin-bottom: var(--space-8); margin-inline: auto;">Découvrez le détail technique de nos démonstrateurs SKY RAIDER, PERSEVERANCE, COMORAN et de nos axes de recherche futurs.</p>
+            <a href="programmes.html" class="btn-primary">Découvrir les programmes <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap foot-layout">
+      <div class="foot-brand">
+        <img src="../assets/novaspace.jpeg" alt="NOVA SPACE">
+        <div>
+          <span class="brand-name">NOVA SPACE</span>
+          <div class="foot-tagline">PERSÉVÉRER JUSQU'AUX ÉTOILES.</div>
+        </div>
+      </div>
+      <nav class="foot-nav">
+        <a href="parcours.html">Parcours</a>
+        <a href="programmes.html">Programmes</a>
+        <a href="equipe.html">Équipe</a>
+        <a href="medias.html">Médias</a>
+        <a href="contact.html">Contact</a>
+        <a href="mentions-legales.html">Mentions légales</a>
+      </nav>
+      <div class="foot-social">
+        <a href="https://www.youtube.com/@NovaSpace-cmr" target="_blank" rel="noopener" aria-label="YouTube">
+          <i class="fab fa-youtube"></i>
+        </a>
+        <a href="https://www.linkedin.com/in/victor-epombo/" target="_blank" rel="noopener" aria-label="LinkedIn">
+          <i class="fab fa-linkedin"></i>
+        </a>
+      </div>
+      <div class="foot-meta">
+        <div>© 2026 NOVA SPACE — Douala, Cameroun</div>
+        <div class="foot-legal"><a href="mentions-legales.html">Mentions légales</a></div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <script src="../js/nova.js"></script>
+  <script>
+    // Filtres interactifs pour la chronologie
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const timelineItems = document.querySelectorAll('.timeline-item');
+
+    filterButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        filterButtons.forEach(btn => btn.classList.remove('active'));
+        button.classList.add('active');
+        const filter = button.dataset.filter;
+
+        timelineItems.forEach(item => {
+          if (filter === 'all' || item.dataset.status === filter) {
+            item.style.display = 'block';
+          } else {
+            item.style.display = 'none';
+          }
+        });
+      });
+    });
+
+    // Toggle expand/collapse card
+    function toggleTimelineCard(card) {
+      card.classList.toggle('expanded');
+    }
+  </script>
+</body>
+</html>

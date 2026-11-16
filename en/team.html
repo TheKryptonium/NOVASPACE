@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Team — NOVA SPACE</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="../css/nova.css">
+  <link rel="shortcut icon" href="../assets/novaspace.jpeg" type="image/jpeg">
+  <style>
+    .team-profile {
+      background: var(--clr-surface);
+      border: 1px solid rgba(201,206,214,0.08);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: min(100%, 300px) 1fr;
+      margin-bottom: var(--space-8);
+      transition: border-color var(--dur-std) var(--ease), box-shadow var(--dur-std) var(--ease);
+    }
+    .team-profile:hover {
+      border-color: rgba(61,214,245,0.25);
+      box-shadow: var(--shadow-cyan);
+    }
+    .team-photo-wrap {
+      aspect-ratio: 4/5;
+      background: #000;
+      position: relative;
+      overflow: hidden;
+    }
+    .team-photo-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      padding: var(--space-4);
+    }
+    .team-body {
+      padding: var(--space-8);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .skill-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-2);
+      margin-block: var(--space-4);
+    }
+    .skill-pill {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 0.05em;
+      background: rgba(201,206,214,0.06);
+      border: 1px solid rgba(201,206,214,0.15);
+      padding: 4px var(--space-3);
+      border-radius: var(--radius-pill);
+      color: var(--clr-chrome);
+    }
+    .team-social-links {
+      display: flex;
+      gap: var(--space-3);
+      margin-top: var(--space-4);
+    }
+    .team-social-links a {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      font-family: var(--font-mono);
+      font-size: var(--fs-xs);
+      color: var(--clr-cyan);
+      border: 1px solid rgba(61,214,245,0.2);
+      padding: 6px var(--space-3);
+      border-radius: var(--radius-sm);
+      transition: all var(--dur-std) var(--ease);
+    }
+    .team-social-links a:hover {
+      background: rgba(61,214,245,0.12);
+      border-color: var(--clr-cyan);
+    }
+    @media (max-width: 768px) {
+      .team-profile {
+        grid-template-columns: 1fr;
+      }
+      .team-photo-wrap {
+        max-height: 340px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="grain"></div>
+
+  <!-- NAV EN -->
+  <header>
+    <nav class="navbar">
+      <div class="brand">
+        <a href="index.html" style="display:flex;align-items:center;gap:var(--space-3);">
+          <img src="../assets/novaspace.jpeg" alt="NOVA SPACE" class="brand-logo">
+          <span class="brand-name">NOVA SPACE</span>
+        </a>
+      </div>
+      <div class="navlinks" id="navlinks">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="journey.html" class="nav-link">Journey</a>
+        <a href="programs.html" class="nav-link">Programs</a>
+        <a href="team.html" class="nav-link active">Team</a>
+        <a href="media.html" class="nav-link">Media</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+      </div>
+      <div class="nav-right">
+        <div class="lang-switcher">
+          <span class="lang-btn active">EN</span>
+          <span class="lang-sep">|</span>
+          <a href="../fr/equipe.html" class="lang-btn">FR</a>
+        </div>
+        <button class="hamburger" id="hamburger" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <!-- CONTENT -->
+  <main class="page-top">
+    <section>
+      <div class="wrap">
+        <div class="section-head fade-up">
+          <div class="kicker">Our team</div>
+          <h1>Cameroonian engineers building rockets.</h1>
+          <p>NOVA SPACE is a dedicated team of three engineers, founded in Douala in 2024 with a unified vision of autonomous African space technology.</p>
+        </div>
+
+        <!-- PROFILE 1: Victor -->
+        <article class="team-profile fade-up" id="victor-epombo">
+          <div class="team-photo-wrap">
+            <img src="../assets/Victor.jpeg" alt="Victor EPOMBO EBOKO DINDE">
+          </div>
+          <div class="team-body">
+            <div class="telemetry-badge" style="width:fit-content;margin-bottom:var(--space-2);">FOUNDER & CEO</div>
+            <h2 style="font-size:var(--fs-2xl);margin-bottom:var(--space-1);">Victor EPOMBO EBOKO DINDE</h2>
+            <div class="mono" style="font-size:var(--fs-xs);color:var(--clr-goal);margin-bottom:var(--space-4);">NOVA SPACE FOUNDER · DOUALA, CAMEROON</div>
+
+            <p style="font-size:var(--fs-base);line-height:1.7;margin-bottom:var(--space-4);">
+              Victor designed and executed the successful flight of PERSEVERANCE, Cameroon's first experimental rocket. Scholar in Electrical Engineering and Intelligent Systems (GESI) at the École Nationale Supérieure Polytechnique de Douala (ENSPD).
+            </p>
+
+            <div class="skill-badges">
+              <span class="skill-pill">Space propulsion</span>
+              <span class="skill-pill">Embedded electronics</span>
+              <span class="skill-pill">Control systems</span>
+              <span class="skill-pill">Telemetry</span>
+              <span class="skill-pill">Mechatronics</span>
+              <span class="skill-pill">Rocket assembly</span>
+            </div>
+
+            <div class="team-social-links">
+              <a href="https://www.linkedin.com/in/victor-epombo/" target="_blank" rel="noopener">
+                <i class="fab fa-linkedin"></i> LinkedIn
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- PROFILE 2: Benoit -->
+        <article class="team-profile fade-up delay-1" id="benoit-atangana">
+          <div class="team-photo-wrap">
+            <img src="../assets/krypto_cto.jpeg" alt="ATANGANA FOUDA V. BENOIT">
+          </div>
+          <div class="team-body">
+            <div class="telemetry-badge" style="width:fit-content;margin-bottom:var(--space-2);">CTO & STRATEGIC LEAD</div>
+            <h2 style="font-size:var(--fs-2xl);margin-bottom:var(--space-1);">ATANGANA FOUDA V. BENOIT</h2>
+            <div class="mono" style="font-size:var(--fs-xs);color:var(--clr-goal);margin-bottom:var(--space-4);">CHIEF TECHNOLOGY OFFICER · DOUALA, CAMEROON</div>
+
+            <p style="font-size:var(--fs-base);line-height:1.7;margin-bottom:var(--space-4);">
+              Engineer in Electrical Engineering and Intelligent Systems (GESI) at ENSPD Douala. Directs technological strategy, mathematical simulations, control software algorithms, and project planning for the demonstrator vehicles.
+            </p>
+
+            <div class="skill-badges">
+              <span class="skill-pill">Mathematical modeling</span>
+              <span class="skill-pill">Embedded electronics</span>
+              <span class="skill-pill">Control systems</span>
+              <span class="skill-pill">Data Science</span>
+              <span class="skill-pill">Design Thinking</span>
+              <span class="skill-pill">Project management</span>
+            </div>
+
+            <div class="team-social-links">
+              <a href="http://www.linkedin.com/in/v-benoit-atangana-84b367449" target="_blank" rel="noopener">
+                <i class="fab fa-linkedin"></i> LinkedIn
+              </a>
+              <a href="https://github.com/TheKryptonium" target="_blank" rel="noopener">
+                <i class="fab fa-github"></i> GitHub
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- PROFILE 3: Laeticia -->
+        <article class="team-profile fade-up delay-2" id="laeticia-nkuidjeu">
+          <div class="team-photo-wrap">
+            <img src="../assets/laeti.jpeg" alt="NKUIDJEU TSAMI Laeticia Candice">
+          </div>
+          <div class="team-body">
+            <div class="telemetry-badge" style="width:fit-content;margin-bottom:var(--space-2);">ENERGY & PROPULSION ENGINEER</div>
+            <h2 style="font-size:var(--fs-2xl);margin-bottom:var(--space-1);">NKUIDJEU TSAMI Laeticia Candice</h2>
+            <div class="mono" style="font-size:var(--fs-xs);color:var(--clr-goal);margin-bottom:var(--space-4);">AEROSPACE PROPULSION · DOUALA, CAMEROON</div>
+
+            <p style="font-size:var(--fs-base);line-height:1.7;margin-bottom:var(--space-4);">
+              Specializes in thermal behavior, thermodynamic propellant cycles, and energetic efficiency for rocket combustion units. Evaluates propellant mixtures and heat transfer mechanics under extreme pressures.
+            </p>
+
+            <div class="skill-badges">
+              <span class="skill-pill">Thermodynamic propulsion</span>
+              <span class="skill-pill">Energy efficiency</span>
+              <span class="skill-pill">Propellant chemistry</span>
+              <span class="skill-pill">Fluid mechanics</span>
+            </div>
+
+            <div class="team-social-links">
+              <a href="https://www.linkedin.com/in/laeticia-candice-379401337/" target="_blank" rel="noopener">
+                <i class="fab fa-linkedin"></i> LinkedIn
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- JOIN THE TEAM CALLOUT -->
+        <div class="card fade-up delay-3" style="margin-top:var(--space-16);text-align:center;padding:var(--space-12);">
+          <div class="kicker" style="justify-content:center;">Careers & Talents</div>
+          <h2 style="font-size:var(--fs-2xl);margin-bottom:var(--space-3);">Join our engineering mission.</h2>
+          <p style="max-width:62ch;margin-inline:auto;margin-bottom:var(--space-8);font-size:var(--fs-md);">
+            NOVA SPACE welcomes bright minds and engineers from ENSPD and universities across Cameroon and Africa. If you are an engineer, researcher, or student eager to build sovereign space technologies, get in touch with our team.
+          </p>
+          <a href="contact.html" class="btn-primary">
+            Contact NOVA SPACE <i class="fas fa-arrow-right"></i>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER EN -->
+  <footer>
+    <div class="wrap foot-layout">
+      <div class="foot-brand">
+        <img src="../assets/novaspace.jpeg" alt="NOVA SPACE">
+        <div>
+          <span class="brand-name">NOVA SPACE</span>
+          <div class="foot-tagline">PERSEVERE TO THE STARS.</div>
+        </div>
+      </div>
+      <nav class="foot-nav">
+        <a href="journey.html">Journey</a>
+        <a href="programs.html">Programs</a>
+        <a href="team.html">Team</a>
+        <a href="media.html">Media</a>
+        <a href="contact.html">Contact</a>
+        <a href="legal.html">Legal</a>
+      </nav>
+      <div class="foot-social">
+        <a href="https://www.youtube.com/@NovaSpace-cmr" target="_blank" rel="noopener" aria-label="YouTube">
+          <i class="fab fa-youtube"></i>
+        </a>
+        <a href="https://www.linkedin.com/in/victor-epombo/" target="_blank" rel="noopener" aria-label="LinkedIn">
+          <i class="fab fa-linkedin"></i>
+        </a>
+      </div>
+      <div class="foot-meta">
+        <div>© 2026 NOVA SPACE — Douala, Cameroon</div>
+        <div class="foot-legal"><a href="legal.html">Legal notice</a></div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <script src="../js/nova.js"></script>
+</body>
+</html>

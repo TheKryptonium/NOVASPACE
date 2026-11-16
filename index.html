@@ -3,393 +3,42 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>NOVA SPACE — Accès à l'espace pour l'Afrique</title>
-  <link rel="stylesheet" href="nova.css">
-  <link rel="shortcut icon" href="./assets/novaspace.jpeg" type="image/x-icon">
+  <title>NOVA SPACE — Redirection</title>
+
+  <!--
+    NOVA SPACE — Redirection intelligente v1.0
+    Détecte la langue du navigateur et redirige vers /fr/ ou /en/.
+    Défaut : /fr/
+  -->
+
+  <!-- Fallback meta refresh vers /fr/ si JS désactivé -->
+  <meta http-equiv="refresh" content="0;url=fr/">
+
+  <style>
+    body {
+      margin: 0;
+      background: #07090D;
+      color: #C9CED6;
+      font-family: 'IBM Plex Mono', monospace, sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      font-size: 0.875rem;
+      letter-spacing: 0.08em;
+    }
+    p { opacity: 0.5; }
+  </style>
 </head>
 <body>
+  <p>REDIRECTING…</p>
 
-<div class="grain"></div>
-
-<header>
-  <nav>
-    <div class="brand">
-      <img src="assets/novaspace.jpeg" alt="NOVA SPACE">
-      <span>NOVA SPACE</span>
-    </div>
-    <div class="navlinks">
-      <a href="#probleme"><span class="num">01</span>Problème</a>
-      <a href="#camaroes"><span class="num">02</span>CAMAROES</a>
-      <a href="#preuve"><span class="num">03</span>Vol d'essai</a>
-      <a href="#modele"><span class="num">04</span>Modèle</a>
-      <a href="#equipe"><span class="num">05</span>Équipe</a>
-    </div>
-    <a href="#contact" class="nav-cta">Nous contacter</a>
-  </nav>
-</header>
-
-<!-- ================= HERO ================= -->
-<section class="hero">
-  <div class="hero-grid"></div>
-  <div class="wrap hero-inner">
-    <div class="eyebrow"><span class="dot-live"></span> DOUALA, CAMEROUN — PROGRAMME LANCEUR ACTIF</div>
-    <h1><span class="chrome-text">L'accès à l'espace,</span><br><span class="accent">réinventé pour l'Afrique.</span></h1>
-    <p class="sub">NOVA SPACE conçoit des lanceurs légers et réutilisables pour mettre en orbite les petits satellites africains — à une fraction du coût des acteurs internationaux.</p>
-    <div class="hero-ctas">
-      <a href="#camaroes" class="btn-primary">Découvrir CAMAROES →</a>
-      <a href="#preuve" class="btn-secondary">Voir le vol d'essai PERSEVERANCE</a>
-    </div>
-
-    <div class="telemetry">
-      <div class="cell">
-        <div class="label">Premier vol d'essai</div>
-        <div class="value">25.04.2025</div>
-      </div>
-      <div class="cell">
-        <div class="label">Altitude atteinte</div>
-        <div class="value ok">~1 000 m</div>
-      </div>
-      <div class="cell">
-        <div class="label">Coût cible / CubeSat 1U</div>
-        <div class="value flame">15 000 USD</div>
-      </div>
-      <div class="cell">
-        <div class="label">Réduction de coût visée</div>
-        <div class="value">jusqu'à 70%</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ================= PROBLEME ================= -->
-<section id="probleme">
-  <div class="wrap">
-    <div class="section-head">
-      <div class="kicker">Le problème</div>
-      <h2>L'orbite reste hors de prix pour l'Afrique.</h2>
-      <p>Les universités, entreprises et gouvernements africains dépendent de fournisseurs étrangers pour lancer le moindre satellite — et en payent le prix fort.</p>
-    </div>
-
-    <div class="problem-layout">
-      <div class="stat-list">
-        <div class="stat-row">
-          <div class="k">Télécommunications, observation de la Terre et surveillance territoriale restent dépendantes de fournisseurs étrangers.</div>
-        </div>
-        <div class="stat-row">
-          <div class="k">Le Cameroun ne dispose d'aucune infrastructure nationale de lancement spatial à ce jour.</div>
-        </div>
-        <div class="stat-row">
-          <div class="k">L'agriculture de précision, la gestion des catastrophes et la sécurité nationale restent freinées par le manque de données satellite locales.</div>
-        </div>
-        <div class="stat-row">
-          <div class="k">Un CubeSat 1U coûte aujourd'hui entre 40 000 et 100 000 USD à lancer via les acteurs internationaux.</div>
-        </div>
-      </div>
-
-      <div class="price-table">
-        <div class="price-row">
-          <div class="co">SpaceX</div>
-          <div class="price">40 000 – 70 000 USD</div>
-        </div>
-        <div class="price-row">
-          <div class="co">Autres fournisseurs internationaux</div>
-          <div class="price">50 000 – 100 000 USD</div>
-        </div>
-        <div class="price-row highlight">
-          <div class="co">NOVA SPACE — CAMAROES</div>
-          <div class="price">15 000 USD</div>
-        </div>
-        <div class="foot">PRIX INDICATIF — LANCEMENT D'UN CUBESAT 1U</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<hr class="rule">
-
-<!-- ================= INNOVATION ================= -->
-<section id="innovation">
-  <div class="wrap">
-    <div class="section-head">
-      <div class="kicker">Le facteur innovant</div>
-      <h2>Une architecture pensée pour le New Space africain.</h2>
-    </div>
-
-    <div class="innov-grid">
-      <div class="innov-card">
-        <div class="idx">/ 01</div>
-        <h3>Conçu pour les CubeSats</h3>
-        <p>Architecture optimisée exclusivement pour les petits satellites africains — pocketsat, nanosat, cubesat — plutôt qu'adaptée d'un lanceur généraliste.</p>
-      </div>
-      <div class="innov-card">
-        <div class="idx">/ 02</div>
-        <h3>Réutilisabilité</h3>
-        <p>Développement d'un lanceur réutilisable pour réduire durablement le coût d'accès à l'espace, mission après mission.</p>
-      </div>
-      <div class="innov-card">
-        <div class="idx">/ 03</div>
-        <h3>Souveraineté technologique</h3>
-        <p>Technologies conçues et testées localement au Cameroun, au service de la souveraineté numérique et spatiale du pays.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ================= CAMAROES PRODUCT ================= -->
-<section id="camaroes" class="product-section">
-  <div class="wrap">
-    <div class="product-layout">
-      <div>
-        <div class="frame-shot">
-          <div class="frame-tag">CAO — CAMAROES v1</div>
-          <img src="assets/modelisation.jpeg" alt="Modélisation CAO du lanceur CAMAROES">
-          <div class="reticle tl"></div><div class="reticle tr"></div>
-          <div class="reticle bl"></div><div class="reticle br"></div>
-        </div>
-      </div>
-      <div>
-        <div class="kicker">Le produit</div>
-        <h2 style="font-size:38px;font-weight:600;margin-bottom:18px;">CAMAROES, le lanceur.</h2>
-        <p style="color:var(--chrome-mid);font-size:16px;line-height:1.7;max-width:480px;">
-          CAMAROES est le lanceur réutilisable de NOVA SPACE, conçu pour mettre en orbite des satellites à coût réduit et démocratiser l'accès à l'espace pour les pays en développement.
-        </p>
-
-        <div class="spec-list">
-          <div class="spec-row"><span>Mission</span><span>Déploiement pocketsat / nanosat / cubesat</span></div>
-          <div class="spec-row"><span>Approche</span><span>Fusée réutilisable</span></div>
-          <div class="spec-row"><span>Objectif coût</span><span>15 000 USD / CubeSat 1U</span></div>
-          <div class="spec-row"><span>Statut</span><span style="color:var(--ok);">En développement — R&D active</span></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ================= PREUVE / PERSEVERANCE ================= -->
-<section id="preuve">
-  <div class="wrap">
-    <div class="section-head">
-      <div class="kicker">La preuve de faisabilité</div>
-      <h2>PERSEVERANCE a déjà volé.</h2>
-      <p>Avant CAMAROES, NOVA SPACE a conçu et testé PERSEVERANCE — première fusée expérimentale développée entièrement au Cameroun.</p>
-    </div>
-
-    <div class="proof-top">
-      <div class="gal-shot" style="aspect-ratio:4/3;">
-        <img src="assets/rampe_perseverance.jpeg" alt="PERSEVERANCE sur son pas de tir">
-        <div class="gal-cap"><b>PERSEVERANCE</b> sur la rampe de lancement — 25 avril 2025</div>
-      </div>
-      <div class="gal-shot" style="aspect-ratio:4/3;">
-        <img src="assets/perseverance-assemblage-equipe.jpeg" alt="Équipe NOVA SPACE assemblant la fusée">
-        <div class="gal-cap">Assemblage final avant le vol par l'équipe NOVA SPACE</div>
-      </div>
-    </div>
-    <div class="proof-bottom">
-      <div class="gal-shot" style="aspect-ratio:16/8;">
-        <img src="assets/perseverance-preparation-telemetrie.jpeg" alt="Préparation de la fusée et de la télémétrie embarquée">
-        <div class="gal-cap">Vérification de la télémétrie embarquée avant le lancement</div>
-      </div>
-      <div class="gal-shot" style="aspect-ratio:16/8;background:var(--panel);display:flex;align-items:center;">
-        <img src="assets/modele-reutilisable.jpeg" alt="Référence — atterrissage d'un lanceur réutilisable" style="opacity:0.92;">
-        <div class="gal-cap">Cap long terme — <b>atterrissage contrôlé</b>, sur le modèle des lanceurs réutilisables</div>
-      </div>
-    </div>
-
-    <div class="flight-log">
-      <div class="fl-cell">
-        <div class="fl-label">Date de vol</div>
-        <div class="fl-val">25.04.2025</div>
-      </div>
-      <div class="fl-cell">
-        <div class="fl-label">Altitude</div>
-        <div class="fl-val">≈ 1 km</div>
-      </div>
-      <div class="fl-cell">
-        <div class="fl-label">Télémétrie</div>
-        <div class="fl-val">Transmise</div>
-      </div>
-      <div class="fl-cell">
-        <div class="fl-label">Soutien</div>
-        <div class="fl-val" style="font-size:15px;color:var(--chrome-hi);">Pr R. M. MOUANGUE, Dir. ENSPD</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<hr class="rule">
-
-<!-- ================= MODELE ECONOMIQUE ================= -->
-<section id="modele">
-  <div class="wrap">
-    <div class="section-head">
-      <div class="kicker">Modèle économique</div>
-      <h2>Quatre sources de revenus.</h2>
-    </div>
-    <div class="model-grid">
-      <div class="model-card">
-        <div class="mi">/ SERVICES</div>
-        <h3>Lancement de CubeSats</h3>
-        <p>Pour entreprises, universités et gouvernements africains.</p>
-      </div>
-      <div class="model-card">
-        <div class="mi">/ INTÉGRATION</div>
-        <h3>Déploiement satellite</h3>
-        <p>Accompagnement des clients dans la conception et l'intégration de leurs charges utiles.</p>
-      </div>
-      <div class="model-card">
-        <div class="mi">/ ÉTAT</div>
-        <h3>Contrats gouvernementaux</h3>
-        <p>Surveillance, télécommunications, observation de la Terre.</p>
-      </div>
-      <div class="model-card">
-        <div class="mi">/ INDUSTRIE</div>
-        <h3>Partenariats</h3>
-        <p>Collaboration avec des entreprises spatiales africaines et internationales.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ================= EQUIPE ================= -->
-<section id="equipe" class="team-section">
-  <div class="wrap">
-    <div class="section-head">
-      <div class="kicker">L'équipe</div>
-      <h2>Notre équipe NOVA SPACE</h2>
-    </div>
-
-    <div class="team-spotlight">
-      <div class="team-photo">
-        <img src="assets/Victor.jpeg" alt="NOVA SPACE" style="object-fit:contain;background:#000;padding:20px;">
-      </div>
-      <div>
-        <div class="team-name">EPOMBO EBOKO DINDE Victor</div>
-        <div class="team-role">FONDATEUR & CEO — NOVA SPACE</div>
-        <p class="team-bio">
-          Étudiant en Génie Électrique et Systèmes Intelligents (GESI) à l'École Nationale Supérieure Polytechnique de Douala (ENSPD). Concepteur de PERSEVERANCE, la première fusée expérimentale camerounaise testée avec succès.
-        </p>
-        <div class="skill-tags">
-          <div class="skill-tag">Propulsion spatiale</div>
-          <div class="skill-tag">Électronique embarquée</div>
-          <div class="skill-tag">Systèmes de contrôle</div>
-          <div class="skill-tag">Télémétrie</div>
-          <div class="skill-tag">Mécatronique</div>
-          <div class="skill-tag">Conception de fusées expérimentales</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="team-grid">
-      <article class="team-card">
-        <div class="team-photo">
-          <img src="assets/krypto_cto.jpeg" alt="Membre de l'équipe NOVA SPACE" style="object-fit:contain;background:#000;padding:20px;">
-        </div>
-        <div class="team-name">ATANGANA FOUDA V. BENOIT</div>
-        <div class="team-role">CTO & Responsable Strategique — NOVA SPACE</div>
-        <p class="team-bio">
-          Ingenieur en Génie Électrique et Systèmes Intelligents (GESI) à l'École Nationale Supérieure Polytechnique de Douala (ENSPD). En charge de la direction technique et stratégique du projet Camaroes.
-        </p>
-        <div class="skill-tags">
-          <div class="skill-tag">Modelisation mathematique</div>
-          <div class="skill-tag">Électronique embarquée</div>
-          <div class="skill-tag">Systèmes de contrôle</div>
-          <div class="skill-tag">Data Science</div>
-          <div class="skill-tag">Design Thinking</div>
-          <div class="skill-tag">Gestion de projets</div>
-        </div>
-      </article>
-
-      <article class="team-card">
-        <div class="team-photo">
-          <img src="assets/laeti.jpeg" alt="Membre de l'équipe NOVA SPACE" style="object-fit:contain;background:#000;padding:20px;">
-        </div>
-        <div class="team-name">NKUIDJEU TSAMI Laeticia Candice</div>
-        <div class="team-role">INGÉNIEUR ENERGETIQUE — NOVA SPACE</div>
-        <p class="team-bio">
-          
-        </p>
-        <div class="skill-tags">
-          <div class="skill-tag">Propulsion thermodynamique</div>
-          <div class="skill-tag">Efficience énergétique</div>
-          <div class="skill-tag">Chimie des ergols</div>
-        </div>
-      </article>
-
-    </div>
-  </div>
-</section>
-
-<!-- ================= PARTENAIRES ================= -->
-<section id="partenaires" style="padding-bottom:0;">
-  <div class="wrap">
-    <div class="section-head">
-      <div class="kicker">Partenaires clés</div>
-      <h2>Institutions, recherche et industrie.</h2>
-    </div>
-  </div>
-
-  <div class="partner-marquee">
-    <div class="partner-track">
-      <span>MINPOSTEL</span><span>MINDEF</span><span>MINMIDT</span><span>NMD</span><span>AFSA</span><span>CNDT</span><span>AIR LIQUIDE</span><span>ENSPD</span>
-      <span>MINPOSTEL</span><span>MINDEF</span><span>MINMIDT</span><span>NMD</span><span>AFSA</span><span>CNDT</span><span>AIR LIQUIDE</span><span>ENSPD</span>
-    </div>
-  </div>
-
-  <div class="wrap">
-    <div class="partner-grid">
-      <div class="partner-cat">
-        <div class="pc-label">Institutions & État</div>
-        <ul>
-          <li>MINPOSTEL</li>
-          <li>MINDEF</li>
-          <li>MINMIDT</li>
-          <li>MINRESI</li>
-          <li>DGRE</li>
-        </ul>
-      </div>
-      <div class="partner-cat">
-        <div class="pc-label">Recherche & académie</div>
-        <ul>
-          <li>ENSPD</li>
-          <li>CNDT</li>
-          <li>AFSA</li>
-        </ul>
-      </div>
-      <div class="partner-cat">
-        <div class="pc-label">Industrie & satellites</div>
-        <ul>
-          <li>NMD — Nano Satellite Mission Design</li>
-          <li>Air Liquide</li>
-          <li>AAC Space Africa</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ================= CTA ================= -->
-<section class="cta-section" id="contact">
-  <div class="wrap">
-    <div class="kicker" style="justify-content:center;">Rejoindre la mission</div>
-    <h2>Construisons ensemble l'accès africain à l'espace.</h2>
-    <p>Institutions, investisseurs, opérateurs satellite — parlons de votre prochaine mission en orbite.</p>
-    <div class="hero-ctas" style="justify-content:center;">
-      <a href="mailto:victorepombo11@gmail.com" class="btn-primary">Contacter NOVA SPACE →</a>
-    </div>
-  </div>
-</section>
-
-<footer>
-  <div class="wrap foot-layout">
-    <div class="foot-brand">
-      <img src="assets/novaspace.jpeg" alt="NOVA SPACE">
-      <span>NOVA SPACE</span>
-    </div>
-    <div class="foot-meta">
-      © 2026 NOVA SPACE — Version 1.0
-    </div>
-  </div>
-</footer>
-
+  <script>
+    (function () {
+      var lang = (navigator.language || navigator.userLanguage || 'fr').toLowerCase();
+      var dest = lang.startsWith('en') ? 'en/' : 'fr/';
+      window.location.replace(dest);
+    })();
+  </script>
 </body>
 </html>

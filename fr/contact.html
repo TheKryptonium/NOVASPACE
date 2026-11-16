@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact — NOVA SPACE</title>
+  <meta name="description" content="Contactez NOVA SPACE. Partenaires industriels, universités, journalistes ou candidats : écrivez à notre équipe à Douala.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="../css/nova.css">
+  <link rel="shortcut icon" href="../assets/novaspace.jpeg" type="image/jpeg">
+  <style>
+    .contact-layout {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--space-12);
+    }
+    @media (min-width: 960px) {
+      .contact-layout {
+        grid-template-columns: 1fr 1.25fr;
+      }
+    }
+    .contact-info-card {
+      background: var(--clr-surface);
+      border: 1px solid rgba(201, 206, 214, 0.1);
+      border-radius: var(--radius-lg);
+      padding: clamp(var(--space-6), 4vw, var(--space-8));
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-6);
+    }
+    .contact-item {
+      display: flex;
+      align-items: flex-start;
+      gap: var(--space-4);
+    }
+    .contact-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: var(--radius-sm);
+      background: rgba(61, 214, 245, 0.08);
+      border: 1px solid rgba(61, 214, 245, 0.25);
+      color: var(--clr-cyan);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: var(--fs-md);
+      flex-shrink: 0;
+    }
+    .contact-details h3 {
+      font-family: var(--font-mono);
+      font-size: var(--fs-xs);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--clr-goal);
+      margin-bottom: 4px;
+    }
+    .contact-details a,
+    .contact-details p {
+      font-size: var(--fs-base);
+      color: var(--clr-offwhite);
+      margin: 0;
+      text-decoration: none;
+      transition: color var(--dur-fast) var(--ease);
+    }
+    .contact-details a:hover {
+      color: var(--clr-cyan);
+    }
+    .team-contacts-list {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-3);
+      margin-top: var(--space-2);
+    }
+    .team-contact-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: var(--space-3) var(--space-4);
+      background: rgba(7, 9, 13, 0.6);
+      border: 1px solid rgba(201, 206, 214, 0.1);
+      border-radius: var(--radius-sm);
+      color: var(--clr-chrome);
+      text-decoration: none;
+      font-size: var(--fs-sm);
+      transition: all var(--dur-std) var(--ease);
+    }
+    .team-contact-link:hover {
+      border-color: var(--clr-cyan);
+      color: var(--clr-cyan);
+      transform: translateX(4px);
+    }
+    .form-box {
+      background: var(--clr-surface);
+      border: 1px solid rgba(201, 206, 214, 0.12);
+      border-radius: var(--radius-lg);
+      padding: clamp(var(--space-6), 4vw, var(--space-10));
+    }
+    .form-note {
+      margin-top: var(--space-4);
+      font-family: var(--font-mono);
+      font-size: var(--fs-xs);
+      color: var(--clr-goal);
+      line-height: 1.5;
+    }
+    select.form-control {
+      appearance: none;
+      background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23C9CED6' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+      background-repeat: no-repeat;
+      background-position: right 1rem center;
+      background-size: 1em;
+    }
+    select.form-control option {
+      background: var(--clr-surface);
+      color: var(--clr-offwhite);
+    }
+  </style>
+</head>
+<body>
+  <div class="grain"></div>
+  <header>
+    <nav class="navbar">
+      <div class="brand">
+        <a href="index.html" style="display:flex;align-items:center;gap:var(--space-3);text-decoration:none;">
+          <img src="../assets/novaspace.jpeg" alt="NOVA SPACE" class="brand-logo">
+          <span class="brand-name">NOVA SPACE</span>
+        </a>
+      </div>
+      <div class="navlinks" id="navlinks">
+        <a href="index.html" class="nav-link">Accueil</a>
+        <a href="parcours.html" class="nav-link">Parcours</a>
+        <a href="programmes.html" class="nav-link">Programmes</a>
+        <a href="equipe.html" class="nav-link">Équipe</a>
+        <a href="medias.html" class="nav-link">Médias</a>
+        <a href="contact.html" class="nav-link active">Contact</a>
+      </div>
+      <div class="nav-right">
+        <div class="lang-switcher">
+          <a href="../en/contact.html" class="lang-btn">EN</a>
+          <span class="lang-sep">|</span>
+          <span class="lang-btn active">FR</span>
+        </div>
+        <button class="hamburger" id="hamburger" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <main class="page-top">
+    <!-- Header Section -->
+    <section style="padding-top: var(--space-8); padding-bottom: var(--space-8);">
+      <div class="engineering-grid"></div>
+      <div class="wrap">
+        <div class="section-head fade-up">
+          <span class="kicker">Contact</span>
+          <h1>Travaillons ensemble.</h1>
+          <p>Partenaires, universités, médias, talents — nous lisons chaque message.</p>
+        </div>
+
+        <div class="contact-layout">
+
+          <!-- Colonne gauche : Coordonnées directes -->
+          <div class="contact-info-card fade-up delay-1">
+            <h2 style="font-size: var(--fs-xl); margin-bottom: var(--space-2);">Canaux directs</h2>
+            <p style="font-size: var(--fs-sm); color: var(--clr-chrome);">Vous pouvez joindre directement la startup par courriel ou entrer en contact avec les membres de l'équipe technique.</p>
+
+            <!-- Email Institutionnel -->
+            <div class="contact-item">
+              <div class="contact-icon">
+                <i class="fas fa-envelope"></i>
+              </div>
+              <div class="contact-details">
+                <h3>Courriel du CEO</h3>
+                <a href="mailto:victorepombo11@gmail.com">victorepombo11@gmail.com</a>
+              </div>
+            </div>
+
+            <!-- Localisation -->
+            <div class="contact-item">
+              <div class="contact-icon">
+                <i class="fas fa-map-marker-alt"></i>
+              </div>
+              <div class="contact-details">
+                <h3>Localisation & Ateliers</h3>
+                <p>Douala, Cameroun · ENSPD</p>
+                <div class="mono" style="font-size:11px;color:var(--clr-goal);margin-top:2px;">École Nationale Supérieure Polytechnique de Douala</div>
+              </div>
+            </div>
+
+            <!-- YouTube -->
+            <div class="contact-item">
+              <div class="contact-icon">
+                <i class="fab fa-youtube"></i>
+              </div>
+              <div class="contact-details">
+                <h3>Chaîne YouTube</h3>
+                <a href="https://www.youtube.com/@NovaSpace-cmr" target="_blank" rel="noopener">@NovaSpace-cmr</a>
+              </div>
+            </div>
+
+            <!-- Contacts directs de l'équipe -->
+            <div style="border-top: 1px solid rgba(201, 206, 214, 0.08); padding-top: var(--space-6);">
+              <h3 style="font-family: var(--font-mono); font-size: var(--fs-xs); letter-spacing: 0.1em; text-transform: uppercase; color: var(--clr-goal); margin-bottom: var(--space-3);">Profils professionnels de l'équipe</h3>
+              <div class="team-contacts-list">
+                <a href="https://www.linkedin.com/in/victor-epombo/" target="_blank" rel="noopener" class="team-contact-link">
+                  <span><strong>Victor EPOMBO</strong> · CEO</span>
+                  <i class="fab fa-linkedin" style="color:var(--clr-cyan);"></i>
+                </a>
+                <a href="http://www.linkedin.com/in/v-benoit-atangana-84b367449" target="_blank" rel="noopener" class="team-contact-link">
+                  <span><strong>Benoit ATANGANA</strong> · CTO</span>
+                  <i class="fab fa-linkedin" style="color:var(--clr-cyan);"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/laeticia-candice-379401337/" target="_blank" rel="noopener" class="team-contact-link">
+                  <span><strong>Candice NKUIDJEU</strong> · Ing. Propulsion</span>
+                  <i class="fab fa-linkedin" style="color:var(--clr-cyan);"></i>
+                </a>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Colonne droite : Formulaire de contact -->
+          <div class="form-box fade-up delay-2">
+            <h2 style="font-size: var(--fs-xl); margin-bottom: var(--space-4);">Envoyer un message</h2>
+
+            <form action="#" method="post" id="contactForm" onsubmit="handleContactSubmit(event)">
+              
+              <div class="form-group">
+                <label for="contactName" class="form-label">Nom complet *</label>
+                <input type="text" id="contactName" name="name" class="form-control" placeholder="Votre nom et prénom" required>
+              </div>
+
+              <div class="form-group">
+                <label for="contactOrg" class="form-label">Organisation / Université</label>
+                <input type="text" id="contactOrg" name="organization" class="form-control" placeholder="Nom de votre entreprise, université ou média">
+              </div>
+
+              <div class="form-group">
+                <label for="contactEmail" class="form-label">Adresse email *</label>
+                <input type="email" id="contactEmail" name="email" class="form-control" placeholder="nom@domaine.com" required>
+              </div>
+
+              <div class="form-group">
+                <label for="contactSubject" class="form-label">Sujet de votre message *</label>
+                <select id="contactSubject" name="subject" class="form-control" required>
+                  <option value="" disabled selected>Sélectionnez un sujet</option>
+                  <option value="Partenariat">Partenariat</option>
+                  <option value="Collaboration académique">Collaboration académique</option>
+                  <option value="Presse / Médias">Presse / Médias</option>
+                  <option value="Candidature">Candidature</option>
+                  <option value="Autre">Autre</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="contactMessage" class="form-label">Message *</label>
+                <textarea id="contactMessage" name="message" rows="5" class="form-control" placeholder="Détaillez votre proposition, projet ou demande..." required></textarea>
+              </div>
+
+              <div id="formFeedback" style="display:none; padding:var(--space-3) var(--space-4); margin-bottom:var(--space-4); border-radius:var(--radius-sm); font-size:var(--fs-sm); font-family:var(--font-mono);"></div>
+
+              <button type="submit" class="btn-primary" style="width: 100%; justify-content: center;">
+                Envoyer <i class="fas fa-arrow-right"></i>
+              </button>
+
+              <div class="form-note">
+                <i class="fas fa-info-circle"></i> Pas encore de backend — ce formulaire est illustratif. Écrivez directement au CEO à <a href="mailto:victorepombo11@gmail.com" style="color:var(--clr-cyan);">victorepombo11@gmail.com</a>.
+              </div>
+
+            </form>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap foot-layout">
+      <div class="foot-brand">
+        <img src="../assets/novaspace.jpeg" alt="NOVA SPACE">
+        <div>
+          <span class="brand-name">NOVA SPACE</span>
+          <div class="foot-tagline">PERSÉVÉRER JUSQU'AUX ÉTOILES.</div>
+        </div>
+      </div>
+      <nav class="foot-nav">
+        <a href="parcours.html">Parcours</a>
+        <a href="programmes.html">Programmes</a>
+        <a href="equipe.html">Équipe</a>
+        <a href="medias.html">Médias</a>
+        <a href="contact.html">Contact</a>
+        <a href="mentions-legales.html">Mentions légales</a>
+      </nav>
+      <div class="foot-social">
+        <a href="https://www.youtube.com/@NovaSpace-cmr" target="_blank" rel="noopener" aria-label="YouTube">
+          <i class="fab fa-youtube"></i>
+        </a>
+        <a href="https://www.linkedin.com/in/victor-epombo/" target="_blank" rel="noopener" aria-label="LinkedIn">
+          <i class="fab fa-linkedin"></i>
+        </a>
+      </div>
+      <div class="foot-meta">
+        <div>© 2026 NOVA SPACE — Douala, Cameroun</div>
+        <div class="foot-legal"><a href="mentions-legales.html">Mentions légales</a></div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <script src="../js/nova.js"></script>
+  <script>
+    function handleContactSubmit(e) {
+      e.preventDefault();
+      const feedback = document.getElementById('formFeedback');
+      const subject = document.getElementById('contactSubject').value;
+      const name = document.getElementById('contactName').value;
+      const email = document.getElementById('contactEmail').value;
+      const msg = document.getElementById('contactMessage').value;
+
+      // Ouvrir client mail par défaut ou afficher retour
+      feedback.style.display = 'block';
+      feedback.style.background = 'rgba(61, 214, 245, 0.15)';
+      feedback.style.border = '1px solid var(--clr-cyan)';
+      feedback.style.color = 'var(--clr-offwhite)';
+      feedback.innerHTML = '<i class="fas fa-paper-plane" style="color:var(--clr-cyan);"></i> Merci ' + name + ' ! Ce formulaire étant en mode statique sans backend, nous vous invitons à confirmer l\'envoi par courriel au CEO à <a href="mailto:victorepombo11@gmail.com?subject=' + encodeURIComponent('[' + subject + '] ' + name) + '&body=' + encodeURIComponent(msg) + '" style="color:var(--clr-cyan); text-decoration:underline;">victorepombo11@gmail.com</a>.';
+    }
+  </script>
+</body>
+</html>

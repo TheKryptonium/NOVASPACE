@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Journey — NOVA SPACE</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="../css/nova.css">
+  <link rel="shortcut icon" href="../assets/novaspace.jpeg" type="image/jpeg">
+  <style>
+    /* Filter buttons styling */
+    .filter-bar {
+      display: flex;
+      gap: var(--space-3);
+      flex-wrap: wrap;
+      margin-bottom: var(--space-12);
+    }
+    .filter-btn {
+      padding: var(--space-2) var(--space-4);
+      font-family: var(--font-mono);
+      font-size: var(--fs-xs);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      border: 1px solid rgba(201,206,214,0.18);
+      border-radius: var(--radius-sm);
+      color: var(--clr-chrome);
+      background: var(--clr-surface);
+      cursor: pointer;
+      transition: all var(--dur-std) var(--ease);
+    }
+    .filter-btn:hover {
+      border-color: var(--clr-cyan);
+      color: var(--clr-offwhite);
+    }
+    .filter-btn.active {
+      background: var(--clr-cyan);
+      color: var(--clr-night);
+      border-color: var(--clr-cyan);
+      font-weight: 600;
+    }
+    .timeline-card {
+      background: var(--clr-surface);
+      border: 1px solid rgba(201,206,214,0.08);
+      border-radius: var(--radius-md);
+      padding: var(--space-6);
+      margin-top: var(--space-3);
+      transition: border-color var(--dur-std) var(--ease), box-shadow var(--dur-std) var(--ease);
+    }
+    .timeline-card:hover {
+      border-color: rgba(61,214,245,0.25);
+      box-shadow: var(--shadow-cyan);
+    }
+    .timeline-thumb {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      border-radius: var(--radius-sm);
+      margin-top: var(--space-4);
+      border: 1px solid rgba(201,206,214,0.1);
+    }
+    .timeline-thumb--portrait {
+      width: auto;
+      height: auto;
+      max-width: 100%;
+      max-height: 420px;
+      object-fit: contain;
+    }
+    .timeline-gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 180px), 1fr));
+      gap: var(--space-3);
+      margin-top: var(--space-4);
+    }
+    .timeline-gallery img {
+      width: 100%;
+      height: 180px;
+      object-fit: contain;
+      background: var(--clr-night);
+      border: 1px solid rgba(201,206,214,0.1);
+      border-radius: var(--radius-sm);
+    }
+  </style>
+</head>
+<body>
+  <div class="grain"></div>
+
+  <!-- NAV EN -->
+  <header>
+    <nav class="navbar">
+      <div class="brand">
+        <a href="index.html" style="display:flex;align-items:center;gap:var(--space-3);">
+          <img src="../assets/novaspace.jpeg" alt="NOVA SPACE" class="brand-logo">
+          <span class="brand-name">NOVA SPACE</span>
+        </a>
+      </div>
+      <div class="navlinks" id="navlinks">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="journey.html" class="nav-link active">Journey</a>
+        <a href="programs.html" class="nav-link">Programs</a>
+        <a href="team.html" class="nav-link">Team</a>
+        <a href="media.html" class="nav-link">Media</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+      </div>
+      <div class="nav-right">
+        <div class="lang-switcher">
+          <span class="lang-btn active">EN</span>
+          <span class="lang-sep">|</span>
+          <a href="../fr/parcours.html" class="lang-btn">FR</a>
+        </div>
+        <button class="hamburger" id="hamburger" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <!-- CONTENT -->
+  <main class="page-top">
+    <section>
+      <div class="wrap">
+        <div class="section-head fade-up">
+          <div class="kicker">Our journey</div>
+          <h1>From concept to maiden flight.</h1>
+          <p>Every milestone is tangible proof. Achieved accomplishments, active engineering, and long-term objectives — always clearly distinguished.</p>
+        </div>
+
+        <!-- Filter bar -->
+        <div class="filter-bar fade-up delay-1" id="timelineFilters">
+          <button class="filter-btn active" data-filter="all">All milestones</button>
+          <button class="filter-btn" data-filter="done">Achieved</button>
+          <button class="filter-btn" data-filter="ongoing">In progress</button>
+          <button class="filter-btn" data-filter="objective">Objective</button>
+        </div>
+
+        <!-- Timeline container -->
+        <div class="timeline" id="timelineContainer" style="max-width:880px;">
+
+          <!-- 1. Founding -->
+          <div class="timeline-item done fade-up" data-status="done">
+            <div class="timeline-date">2024 · FOUNDATION</div>
+            <div class="status-done"><span class="status-label">ACHIEVED</span></div>
+            <h3 class="timeline-title">Foundation of NOVA SPACE</h3>
+            <div class="timeline-card">
+              <p class="timeline-desc">
+                Inception of NOVA SPACE in Douala, Cameroon, by engineering students from the École Nationale Supérieure Polytechnique de Douala (ENSPD). Initiation of baseline aerospace R&D programs focused on accessible space technology.
+              </p>
+              <img src="../assets/cofounders.jpeg" alt="NOVA SPACE cofounders" class="timeline-thumb timeline-thumb--portrait">
+            </div>
+          </div>
+
+          <!-- 2. SKY RAIDER -->
+          <div class="timeline-item done fade-up" data-status="done">
+            <div class="timeline-date">2024 · PROPULSION DEMO</div>
+            <div class="status-done"><span class="status-label">ACHIEVED</span></div>
+            <h3 class="timeline-title">SKY RAIDER Propulsion Demonstrator</h3>
+            <div class="timeline-card">
+              <p class="timeline-desc">
+                Development and static bench testing of SKY RAIDER, NOVA SPACE's first experimental propulsion demonstrator. Validated combustion mechanics, chamber thermal tolerance, and nozzle geometry fundamentals.
+              </p>
+            </div>
+          </div>
+
+          <!-- 3. PERSEVERANCE Conception -->
+          <div class="timeline-item done fade-up" data-status="done">
+            <div class="timeline-date">2024 · ENGINEERING & DESIGN</div>
+            <div class="status-done"><span class="status-label">ACHIEVED</span></div>
+            <h3 class="timeline-title">PERSEVERANCE — Rocket Architecture</h3>
+            <div class="timeline-card">
+              <p class="timeline-desc">
+                Complete design and engineering of our flagship suborbital prototype: custom liquid propulsion unit, lightweight composite fuselage, integrated launch rail guides, and real-time sensor avionics.
+              </p>
+              <img src="../assets/perseverance-preparation-telemetrie.jpeg" alt="PERSEVERANCE avionics preparation" class="timeline-thumb">
+            </div>
+          </div>
+
+          <!-- 4. ENSPD Partnership -->
+          <div class="timeline-item done fade-up" data-status="done">
+            <div class="timeline-date">2024 · ACADEMIC ALLIANCE</div>
+            <div class="status-done"><span class="status-label">ACHIEVED</span></div>
+            <h3 class="timeline-title">Academic Partnership with ENSPD</h3>
+            <div class="timeline-card">
+              <p class="timeline-desc">
+                Signature of a collaborative framework with the École Nationale Supérieure Polytechnique de Douala. Granted university laboratory access, engineering peer reviews, and institutional support from university director Pr R. M. MOUANGUE.
+              </p>
+            </div>
+          </div>
+
+          <!-- 5. Air Liquide Partnership -->
+          <div class="timeline-item done fade-up" data-status="done">
+            <div class="timeline-date">2025 · INDUSTRIAL SUPPORT</div>
+            <div class="status-done"><span class="status-label">ACHIEVED</span></div>
+            <h3 class="timeline-title">Industrial Partnership with Air Liquide</h3>
+            <div class="timeline-card">
+              <p class="timeline-desc">
+                Strategic industrial supply agreement with Air Liquide, providing certified industrial gases, pressurants, and purge agents critical for rocket engine tests and launch pad operations.
+              </p>
+            </div>
+          </div>
+
+          <!-- 6. PERSEVERANCE Test Flight -->
+          <div class="timeline-item done fade-up" data-status="done">
+            <div class="timeline-date">25 APRIL 2025 · MAIDEN FLIGHT</div>
+            <div class="status-done"><span class="status-label">ACHIEVED · HISTORIC FLIGHT</span></div>
+            <h3 class="timeline-title">PERSEVERANCE Maiden Flight (≈ 1 km)</h3>
+            <div class="timeline-card">
+              <p class="timeline-desc">
+                Historic flight of Cameroon's first experimental rocket, reaching approximately 1,000 meters in altitude. The launch verified aerodynamic stability, live radio telemetry downlink, and engine ignition sequence under field conditions.
+              </p>
+              <div style="display:flex;gap:var(--space-2);margin-top:var(--space-3);flex-wrap:wrap;">
+                <span class="telemetry-badge">ALTITUDE ≈ 1 KM</span>
+                <span class="telemetry-badge">TELEMETRY TRANSMITTED</span>
+                <span class="telemetry-badge">ENSPD ENDORSEMENT</span>
+              </div>
+              <img src="../assets/rampe_perseverance.jpeg" alt="PERSEVERANCE on launch rail" class="timeline-thumb">
+            </div>
+          </div>
+
+          <!-- 7. JERSIC Award -->
+          <div class="timeline-item done fade-up" data-status="done">
+            <div class="timeline-date">2025 · NATIONAL AWARD</div>
+            <div class="status-done"><span class="status-label">ACHIEVED · FIRST PRIZE</span></div>
+            <h3 class="timeline-title">JERSIC 2025 — First Prize</h3>
+            <div class="timeline-card">
+              <p class="timeline-desc">
+                NOVA SPACE received first prize at JERSIC 2025, organized by MINRESI. The photograph shows the project pitch presented at the event.
+              </p>
+              <img src="../assets/presentation_JERSIC2025.jpeg" alt="NOVA SPACE pitch at JERSIC 2025, organized by MINRESI" class="timeline-thumb timeline-thumb--portrait">
+            </div>
+          </div>
+
+          <!-- 8. ICT Week Award -->
+          <div class="timeline-item done fade-up" data-status="done">
+            <div class="timeline-date">2026 · NATIONAL RECOGNITION</div>
+            <div class="status-done"><span class="status-label">ACHIEVED · 6TH PLACE</span></div>
+            <h3 class="timeline-title">ICT Week 2026 — 6th Place Award</h3>
+            <div class="timeline-card">
+              <p class="timeline-desc">
+                National technology recognition at ICT Week 2026, ranking 6th among premier Cameroonian innovation initiatives for groundbreaking aerospace and electronics engineering.
+              </p>
+              <img src="../assets/Prize ICT Week 2026_6th place.jpeg" alt="ICT Week 2026 Award" class="timeline-thumb">
+            </div>
+          </div>
+
+          <!-- 8. COMORAN -->
+          <div class="timeline-item ongoing fade-up" data-status="ongoing">
+            <div class="timeline-date">2026 · ACTIVE R&D</div>
+            <div class="status-ongoing"><span class="status-label"><span class="pulse-dot"></span> IN PROGRESS — 75%</span></div>
+            <h3 class="timeline-title">COMORAN Electric Demonstrator</h3>
+            <div class="timeline-card" style="border-color:rgba(255,90,31,0.25);">
+              <p class="timeline-desc">
+                Engineering and physical assembly of our electric flight demonstrator, currently at 75% completion. Focuses on electro-mechanical guidance, digital bus architecture, and high-efficiency avionics. Never presented as a finished system until full test completion.
+              </p>
+              <div class="timeline-gallery" aria-label="COMORAN demonstrator visuals">
+                <img src="../assets/structure_mecanique_comoran.jpeg" alt="COMORAN mechanical structure" loading="lazy">
+                <img src="../assets/comoran_.jpeg" alt="COMORAN structure in the workshop" loading="lazy">
+                <img src="../assets/modelisation 3D comoran.jpeg" alt="COMORAN 3D modeling" loading="lazy">
+                <img src="../assets/modele 3D_2_COMORAN.jpeg" alt="COMORAN 3D model" loading="lazy">
+              </div>
+              <div class="progress-bar-wrap" style="margin-top:var(--space-4);max-width:320px;">
+                <div class="progress-bar-label">
+                  <span>Development progress</span>
+                  <span style="color:var(--clr-flame);font-weight:600;">75%</span>
+                </div>
+                <div class="progress-bar">
+                  <div class="progress-fill animated" style="transform:scaleX(0.75);background:var(--clr-flame);"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 9. COMORAN Finalization -->
+          <div class="timeline-item objective fade-up" data-status="objective">
+            <div class="timeline-date">HORIZON 2026–2027 · TESTING</div>
+            <div class="status-objective"><span class="status-label">OBJECTIVE</span></div>
+            <h3 class="timeline-title">COMORAN Finalization & Field Testing</h3>
+            <div class="timeline-card" style="border-style:dashed;">
+              <p class="timeline-desc">
+                Complete system integration and comprehensive flight tests for the electric demonstrator platform to certify avionics stability in harsh dynamic conditions.
+              </p>
+            </div>
+          </div>
+
+          <!-- 10. CAMAROES -->
+          <div class="timeline-item objective fade-up" data-status="objective">
+            <div class="timeline-date">FUTURE HORIZON · RESEARCH</div>
+            <div class="status-objective"><span class="status-label">OBJECTIVE</span></div>
+            <h3 class="timeline-title">CAMAROES Reusability Demonstrator</h3>
+            <div class="timeline-card" style="border-style:dashed;">
+              <p class="timeline-desc">
+                Development of a dedicated reusability demonstrator to explore controlled return trajectories and recovery mechanisms. An essential experimental step forward, not a commercial service.
+              </p>
+            </div>
+          </div>
+
+          <!-- 11. Orbital Launcher -->
+          <div class="timeline-item objective fade-up" data-status="objective">
+            <div class="timeline-date">LONG-TERM HORIZON · ORBITAL GOAL</div>
+            <div class="status-objective"><span class="status-label">LONG-TERM OBJECTIVE</span></div>
+            <h3 class="timeline-title">Orbital Launcher Capability</h3>
+            <div class="timeline-card" style="border-style:dashed;">
+              <p class="timeline-desc">
+                The ultimate technological destination of NOVA SPACE: delivering sovereign orbital launch capability for African small satellites, designed, assembled, and launched from Cameroon.
+              </p>
+            </div>
+          </div>
+
+        </div>
+
+        <div style="margin-top:var(--space-16);text-align:center;">
+          <a href="programs.html" class="btn-primary">
+            Explore our programs <i class="fas fa-arrow-right"></i>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER EN -->
+  <footer>
+    <div class="wrap foot-layout">
+      <div class="foot-brand">
+        <img src="../assets/novaspace.jpeg" alt="NOVA SPACE">
+        <div>
+          <span class="brand-name">NOVA SPACE</span>
+          <div class="foot-tagline">PERSEVERE TO THE STARS.</div>
+        </div>
+      </div>
+      <nav class="foot-nav">
+        <a href="journey.html">Journey</a>
+        <a href="programs.html">Programs</a>
+        <a href="team.html">Team</a>
+        <a href="media.html">Media</a>
+        <a href="contact.html">Contact</a>
+        <a href="legal.html">Legal</a>
+      </nav>
+      <div class="foot-social">
+        <a href="https://www.youtube.com/@NovaSpace-cmr" target="_blank" rel="noopener" aria-label="YouTube">
+          <i class="fab fa-youtube"></i>
+        </a>
+        <a href="https://www.linkedin.com/in/victor-epombo/" target="_blank" rel="noopener" aria-label="LinkedIn">
+          <i class="fab fa-linkedin"></i>
+        </a>
+      </div>
+      <div class="foot-meta">
+        <div>© 2026 NOVA SPACE — Douala, Cameroon</div>
+        <div class="foot-legal"><a href="legal.html">Legal notice</a></div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <script src="../js/nova.js"></script>
+  <script>
+    // Timeline client filtering
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const f = btn.getAttribute('data-filter');
+        document.querySelectorAll('.timeline-item').forEach(item => {
+          if (f === 'all' || item.getAttribute('data-status') === f) {
+            item.style.display = 'block';
+          } else {
+            item.style.display = 'none';
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>

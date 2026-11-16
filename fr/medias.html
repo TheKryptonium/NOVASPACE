@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Médias — NOVA SPACE</title>
+  <meta name="description" content="Galerie photo, vidéos et kit presse de NOVA SPACE. Retrouvez les images des essais, de l'équipe et du vol de PERSEVERANCE.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="../css/nova.css">
+  <link rel="shortcut icon" href="../assets/novaspace.jpeg" type="image/jpeg">
+  <style>
+    .media-filter-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-3);
+      margin-bottom: var(--space-12);
+      align-items: center;
+    }
+    .media-filter-btn {
+      font-family: var(--font-mono);
+      font-size: var(--fs-xs);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: var(--space-2) var(--space-4);
+      border-radius: var(--radius-pill);
+      border: 1px solid rgba(201, 206, 214, 0.2);
+      background: var(--clr-surface);
+      color: var(--clr-chrome);
+      cursor: pointer;
+      transition: all var(--dur-std) var(--ease);
+    }
+    .media-filter-btn:hover {
+      border-color: var(--clr-cyan);
+      color: var(--clr-offwhite);
+    }
+    .media-filter-btn.active {
+      background: rgba(61, 214, 245, 0.15);
+      border-color: var(--clr-cyan);
+      color: var(--clr-cyan);
+    }
+    .media-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(min(100%, 340px), 1fr));
+      gap: var(--space-6);
+    }
+    .media-card {
+      background: var(--clr-surface);
+      border: 1px solid rgba(201, 206, 214, 0.1);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: all var(--dur-std) var(--ease);
+      cursor: pointer;
+    }
+    .media-card:hover {
+      border-color: rgba(61, 214, 245, 0.35);
+      box-shadow: var(--shadow-cyan);
+      transform: translateY(-3px);
+    }
+    .media-img-container {
+      position: relative;
+      width: 100%;
+      height: 240px;
+      overflow: hidden;
+      background: rgba(7, 9, 13, 0.9);
+    }
+    .media-img-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform var(--dur-slow) var(--ease);
+    }
+    .media-img-container--portrait img {
+      object-fit: contain;
+    }
+    .media-img-container--contain img {
+      object-fit: contain;
+    }
+    .media-card:hover .media-img-container img {
+      transform: scale(1.05);
+    }
+    .media-card-caption {
+      padding: var(--space-4) var(--space-5);
+      font-size: var(--fs-sm);
+      color: var(--clr-offwhite);
+      font-family: var(--font-body);
+      font-weight: 500;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: var(--space-2);
+      background: var(--clr-surface);
+      flex-grow: 1;
+    }
+    .media-tag {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: var(--clr-goal);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 2px 6px;
+      background: rgba(7, 9, 13, 0.5);
+      border-radius: var(--radius-sm);
+      white-space: nowrap;
+    }
+    /* Lightbox Modal */
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 1000;
+      background: rgba(7, 9, 13, 0.95);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: var(--space-6);
+    }
+    .lightbox.active {
+      display: flex;
+    }
+    .lightbox-content {
+      max-width: 900px;
+      width: 100%;
+      position: relative;
+      text-align: center;
+    }
+    .lightbox-img {
+      max-height: 80vh;
+      max-width: 100%;
+      border-radius: var(--radius-md);
+      border: 1px solid rgba(61, 214, 245, 0.3);
+      box-shadow: var(--shadow-cyan);
+    }
+    .lightbox-caption {
+      margin-top: var(--space-4);
+      font-family: var(--font-mono);
+      font-size: var(--fs-sm);
+      color: var(--clr-offwhite);
+    }
+    .lightbox-close {
+      position: absolute;
+      top: -48px;
+      right: 0;
+      background: transparent;
+      border: none;
+      color: var(--clr-chrome);
+      font-size: var(--fs-2xl);
+      cursor: pointer;
+      transition: color var(--dur-fast) var(--ease);
+    }
+    .lightbox-close:hover {
+      color: var(--clr-cyan);
+    }
+  </style>
+</head>
+<body>
+  <div class="grain"></div>
+  <header>
+    <nav class="navbar">
+      <div class="brand">
+        <a href="index.html" style="display:flex;align-items:center;gap:var(--space-3);text-decoration:none;">
+          <img src="../assets/novaspace.jpeg" alt="NOVA SPACE" class="brand-logo">
+          <span class="brand-name">NOVA SPACE</span>
+        </a>
+      </div>
+      <div class="navlinks" id="navlinks">
+        <a href="index.html" class="nav-link">Accueil</a>
+        <a href="parcours.html" class="nav-link">Parcours</a>
+        <a href="programmes.html" class="nav-link">Programmes</a>
+        <a href="equipe.html" class="nav-link">Équipe</a>
+        <a href="medias.html" class="nav-link active">Médias</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+      </div>
+      <div class="nav-right">
+        <div class="lang-switcher">
+          <a href="../en/media.html" class="lang-btn">EN</a>
+          <span class="lang-sep">|</span>
+          <span class="lang-btn active">FR</span>
+        </div>
+        <button class="hamburger" id="hamburger" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <main class="page-top">
+    <!-- Header Section -->
+    <section style="padding-top: var(--space-8); padding-bottom: var(--space-8);">
+      <div class="engineering-grid"></div>
+      <div class="wrap">
+        <div class="section-head fade-up">
+          <span class="kicker">Médias</span>
+          <h1>NOVA SPACE en images.</h1>
+          <p>Retrouvez les photographies de nos campagnes d'essais, les jalons de PERSEVERANCE et le travail au quotidien de nos ingénieurs à Douala.</p>
+        </div>
+
+        <!-- Filtres Médias -->
+        <div class="media-filter-bar fade-up delay-1" role="toolbar" aria-label="Filtrer les photos">
+          <button class="media-filter-btn active" data-category="all">Toutes les images</button>
+          <button class="media-filter-btn" data-category="perseverance">PERSEVERANCE</button>
+          <button class="media-filter-btn" data-category="equipe">Équipe & Ateliers</button>
+          <button class="media-filter-btn" data-category="rd">R&D & Prix</button>
+        </div>
+
+        <!-- Galerie Photos -->
+        <div class="media-grid" id="mediaGrid">
+
+          <!-- 1. Rampe PERSEVERANCE -->
+          <div class="media-card fade-up" data-category="perseverance" onclick="openLightbox('../assets/rampe_perseverance.jpeg', 'PERSEVERANCE sur la rampe — 25 avril 2025')">
+            <div class="media-img-container">
+              <img src="../assets/rampe_perseverance.jpeg" alt="PERSEVERANCE sur la rampe — 25 avril 2025" loading="lazy">
+            </div>
+            <div class="media-card-caption">
+              <span>PERSEVERANCE sur la rampe — 25 avril 2025</span>
+              <span class="media-tag">Vol d'essai</span>
+            </div>
+          </div>
+
+          <!-- 2. Assemblage final -->
+          <div class="media-card fade-up" data-category="perseverance" onclick="openLightbox('../assets/perseverance-assemblage-equipe.jpeg', 'Assemblage final par l\'équipe NOVA SPACE')">
+            <div class="media-img-container">
+              <img src="../assets/perseverance-assemblage-equipe.jpeg" alt="Assemblage final par l'équipe NOVA SPACE" loading="lazy">
+            </div>
+            <div class="media-card-caption">
+              <span>Assemblage final par l'équipe NOVA SPACE</span>
+              <span class="media-tag">Intégration</span>
+            </div>
+          </div>
+
+          <!-- 3. Préparation télémétrie -->
+          <div class="media-card fade-up" data-category="perseverance" onclick="openLightbox('../assets/perseverance-preparation-telemetrie.jpeg', 'Vérification de la télémétrie embarquée')">
+            <div class="media-img-container">
+              <img src="../assets/perseverance-preparation-telemetrie.jpeg" alt="Vérification de la télémétrie embarquée" loading="lazy">
+            </div>
+            <div class="media-card-caption">
+              <span>Vérification de la télémétrie embarquée</span>
+              <span class="media-tag">Électronique</span>
+            </div>
+          </div>
+
+          <!-- 4. Fixation de PERSEVERANCE -->
+          <div class="media-card fade-up" data-category="perseverance" onclick="openLightbox('../assets/perseverance fixation.jpeg', 'Fixation de PERSEVERANCE sur son banc d\'essai')">
+            <div class="media-img-container">
+              <img src="../assets/perseverance fixation.jpeg" alt="Fixation de PERSEVERANCE" loading="lazy">
+            </div>
+            <div class="media-card-caption">
+              <span>Fixation de PERSEVERANCE</span>
+              <span class="media-tag">Banc d'essai</span>
+            </div>
+          </div>
+
+          <!-- 5. L'équipe au travail -->
+          <div class="media-card fade-up" data-category="equipe" onclick="openLightbox('../assets/working_duo.jpeg', 'L\'équipe au travail dans les ateliers à Douala')">
+            <div class="media-img-container">
+              <img src="../assets/working_duo.jpeg" alt="L'équipe au travail" loading="lazy">
+            </div>
+            <div class="media-card-caption">
+              <span>L'équipe au travail</span>
+              <span class="media-tag">Atelier</span>
+            </div>
+          </div>
+
+          <!-- 6. Les cofondateurs -->
+          <div class="media-card fade-up" data-category="equipe" onclick="openLightbox('../assets/cofounders.jpeg', 'Les cofondateurs de NOVA SPACE')">
+            <div class="media-img-container media-img-container--contain">
+              <img src="../assets/cofounders.jpeg" alt="Les cofondateurs" loading="lazy">
+            </div>
+            <div class="media-card-caption">
+              <span>Les cofondateurs</span>
+              <span class="media-tag">Équipe</span>
+            </div>
+          </div>
+
+          <!-- 7. Les cofondateurs 2 -->
+          <div class="media-card fade-up" data-category="equipe" onclick="openLightbox('../assets/cofounders2.jpeg', 'Séance de travail et de planification')">
+            <div class="media-img-container media-img-container--contain">
+              <img src="../assets/cofounders2.jpeg" alt="Les cofondateurs" loading="lazy">
+            </div>
+            <div class="media-card-caption">
+              <span>Les cofondateurs (planification)</span>
+              <span class="media-tag">Stratégie</span>
+            </div>
+          </div>
+
+          <!-- 8. Présentation NOVA SPACE -->
+          <div class="media-card fade-up" data-category="rd" onclick="openLightbox('../assets/presentation_JERSIC2025.jpeg', 'Pitch de NOVA SPACE au JERSIC 2025 organisé par le MINRESI')">
+            <div class="media-img-container media-img-container--portrait">
+              <img src="../assets/presentation_JERSIC2025.jpeg" alt="Pitch de NOVA SPACE au JERSIC 2025 organisé par le MINRESI" loading="lazy">
+            </div>
+            <div class="media-card-caption">
+              <span>Pitch de NOVA SPACE — JERSIC 2025, organisé par le MINRESI</span>
+              <span class="media-tag">Premier prix</span>
+            </div>
+          </div>
+
+          <!-- 9. Modélisation CAMAROES -->
+          <div class="media-card fade-up" data-category="rd" onclick="openLightbox('../assets/modelisation.jpeg', 'Modélisation CAMAROES · Modélisation 3D')">
+            <div class="media-img-container">
+              <img src="../assets/modelisation.jpeg" alt="Modélisation CAMAROES · Modélisation" loading="lazy">
+            </div>
+            <div class="media-card-caption">
+              <span>Modélisation CAMAROES · Modélisation</span>
+              <span class="media-tag">CAO 3D</span>
+            </div>
+          </div>
+
+          <!-- 10. Visuels COMORAN -->
+          <div class="media-card fade-up" data-category="rd" onclick="openLightbox('../assets/structure_mecanique_comoran.jpeg', 'Structure mécanique du démonstrateur COMORAN')">
+            <div class="media-img-container media-img-container--contain">
+              <img src="../assets/structure_mecanique_comoran.jpeg" alt="Structure mécanique du démonstrateur COMORAN" loading="lazy">
+            </div>
+            <div class="media-card-caption"><span>Structure mécanique de COMORAN</span><span class="media-tag">COMORAN</span></div>
+          </div>
+          <div class="media-card fade-up" data-category="rd" onclick="openLightbox('../assets/comoran_.jpeg', 'Structure de COMORAN en atelier')">
+            <div class="media-img-container media-img-container--contain">
+              <img src="../assets/comoran_.jpeg" alt="Structure de COMORAN en atelier" loading="lazy">
+            </div>
+            <div class="media-card-caption"><span>COMORAN en atelier</span><span class="media-tag">COMORAN</span></div>
+          </div>
+          <div class="media-card fade-up" data-category="rd" onclick="openLightbox('../assets/modelisation 3D comoran.jpeg', 'Modélisation 3D de COMORAN')">
+            <div class="media-img-container media-img-container--contain">
+              <img src="../assets/modelisation 3D comoran.jpeg" alt="Modélisation 3D de COMORAN" loading="lazy">
+            </div>
+            <div class="media-card-caption"><span>Modélisation 3D de COMORAN</span><span class="media-tag">Modélisation</span></div>
+          </div>
+          <div class="media-card fade-up" data-category="rd" onclick="openLightbox('../assets/modele 3D_2_COMORAN.jpeg', 'Modèle 3D de COMORAN')">
+            <div class="media-img-container media-img-container--contain">
+              <img src="../assets/modele 3D_2_COMORAN.jpeg" alt="Modèle 3D de COMORAN" loading="lazy">
+            </div>
+            <div class="media-card-caption"><span>Modèle 3D de COMORAN</span><span class="media-tag">Modélisation</span></div>
+          </div>
+
+          <!-- 14. Prix ICT Week 2026 -->
+          <div class="media-card fade-up" data-category="rd" onclick="openLightbox('../assets/Prize ICT Week 2026_6th place.jpeg', 'Prix ICT Week 2026 — 6e place')">
+            <div class="media-img-container">
+              <img src="../assets/Prize ICT Week 2026_6th place.jpeg" alt="Prix ICT Week 2026 — 6e place" loading="lazy">
+            </div>
+            <div class="media-card-caption">
+              <span>Prix ICT Week 2026 — 6e place</span>
+              <span class="media-tag">Distinction</span>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Section Vidéos YouTube -->
+    <section style="background: var(--clr-surface); padding-block: var(--space-20); border-top: 1px solid rgba(201, 206, 214, 0.08);">
+      <div class="wrap">
+        <div class="grid-2" style="align-items: center;">
+          <div class="fade-up">
+            <span class="kicker">Chaîne officielle</span>
+            <h2>Suivez NOVA SPACE sur YouTube</h2>
+            <p style="margin-block: var(--space-4) var(--space-8);">Retrouvez les vidéos de nos essais de propulsion, les séquences embarquées de PERSEVERANCE et les explications pédagogiques de nos ingénieurs.</p>
+            <a href="https://www.youtube.com/@NovaSpace-cmr" target="_blank" rel="noopener" class="btn-primary">
+              <i class="fab fa-youtube"></i> Voir la chaîne YouTube →
+            </a>
+          </div>
+          <div class="fade-up delay-1">
+            <div class="card" style="padding: var(--space-8); background: rgba(7, 9, 13, 0.7); border-left: 3px solid #ff0000;">
+              <div style="display:flex; align-items:center; gap: var(--space-4); margin-bottom: var(--space-4);">
+                <div style="width:48px; height:48px; border-radius:50%; background:#ff0000; display:flex; align-items:center; justify-content:center; color:#fff; font-size:24px;">
+                  <i class="fab fa-youtube"></i>
+                </div>
+                <div>
+                  <div style="font-family: var(--font-title); font-size: var(--fs-md); font-weight: 700; color: var(--clr-offwhite);">@NovaSpace-cmr</div>
+                  <div class="mono" style="font-size: var(--fs-xs); color: var(--clr-goal);">Chaîne YouTube Officielle</div>
+                </div>
+              </div>
+              <p style="font-size: var(--fs-sm); color: var(--clr-chrome); margin-bottom: 0;">Abonnez-vous pour ne manquer aucune vidéo de bancs d'essais, récapitulatifs de lancement et points d'étape de nos projets.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section Reconnaissances -->
+    <section style="padding-block: var(--space-16);">
+      <div class="wrap">
+        <div class="section-head fade-up">
+          <span class="kicker">Palmarès</span>
+          <h2>Reconnaissances</h2>
+        </div>
+
+        <div class="card fade-up delay-1" style="max-width: 680px; padding: var(--space-8); border-left: 3px solid var(--clr-cyan);">
+          <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:var(--space-3); flex-wrap:wrap; gap:var(--space-2);">
+            <div style="font-family: var(--font-title); font-size: var(--fs-lg); font-weight: 700; color: var(--clr-offwhite);">
+              ICT Week 2026 — 6e place
+            </div>
+            <span class="telemetry-badge"><i class="fas fa-trophy"></i> 2026</span>
+          </div>
+          <p style="font-size: var(--fs-sm); color: var(--clr-chrome); margin-bottom: 0;">
+            Attribué à l'équipe NOVA SPACE pour sa contribution innovante et son engagement en ingénierie de pointe au Cameroun lors de l'édition 2026 de l'ICT Week.
+          </p>
+        </div>
+        <div class="card fade-up delay-2" style="max-width: 680px; padding: var(--space-8); margin-top: var(--space-6); border-left: 3px solid var(--clr-cyan);">
+          <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:var(--space-3); flex-wrap:wrap; gap:var(--space-2);">
+            <div style="font-family: var(--font-title); font-size: var(--fs-lg); font-weight: 700; color: var(--clr-offwhite);">
+              JERSIC 2025 — Premier prix
+            </div>
+            <span class="telemetry-badge"><i class="fas fa-trophy"></i> 2025</span>
+          </div>
+          <p style="font-size: var(--fs-sm); color: var(--clr-chrome); margin-bottom: 0;">
+            Distinction obtenue par NOVA SPACE au JERSIC 2025, organisé par le MINRESI. La photo du pitch est présentée dans la galerie.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Kit Presse -->
+    <section style="background: var(--clr-surface); padding-block: var(--space-16); border-top: 1px solid rgba(201, 206, 214, 0.08);">
+      <div class="wrap">
+        <div class="card fade-up" style="padding: clamp(var(--space-8), 4vw, var(--space-12)); text-align: center; max-width: 720px; margin-inline: auto;">
+          <span class="kicker" style="justify-content: center;">Presse & Relations Médias</span>
+          <h2 style="font-size: var(--fs-2xl); margin-bottom: var(--space-4);">Kit Presse & Interviews</h2>
+          <p style="margin-bottom: var(--space-8); margin-inline: auto;">Vous êtes journaliste, créateur de contenu ou représentant d'un média ? Pour toute demande presse, accès à des visuels haute résolution ou demande d'interview avec l'équipe fondatrice, écrivez-nous.</p>
+          <a href="contact.html" class="btn-primary">Contact presse →</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Lightbox Modal Component -->
+  <div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
+    <div class="lightbox-content">
+      <button class="lightbox-close" onclick="closeLightboxDirect()" aria-label="Fermer"><i class="fas fa-times"></i></button>
+      <img src="" alt="" class="lightbox-img" id="lightboxImg">
+      <div class="lightbox-caption" id="lightboxCaption"></div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="wrap foot-layout">
+      <div class="foot-brand">
+        <img src="../assets/novaspace.jpeg" alt="NOVA SPACE">
+        <div>
+          <span class="brand-name">NOVA SPACE</span>
+          <div class="foot-tagline">PERSÉVÉRER JUSQU'AUX ÉTOILES.</div>
+        </div>
+      </div>
+      <nav class="foot-nav">
+        <a href="parcours.html">Parcours</a>
+        <a href="programmes.html">Programmes</a>
+        <a href="equipe.html">Équipe</a>
+        <a href="medias.html">Médias</a>
+        <a href="contact.html">Contact</a>
+        <a href="mentions-legales.html">Mentions légales</a>
+      </nav>
+      <div class="foot-social">
+        <a href="https://www.youtube.com/@NovaSpace-cmr" target="_blank" rel="noopener" aria-label="YouTube">
+          <i class="fab fa-youtube"></i>
+        </a>
+        <a href="https://www.linkedin.com/in/victor-epombo/" target="_blank" rel="noopener" aria-label="LinkedIn">
+          <i class="fab fa-linkedin"></i>
+        </a>
+      </div>
+      <div class="foot-meta">
+        <div>© 2026 NOVA SPACE — Douala, Cameroun</div>
+        <div class="foot-legal"><a href="mentions-legales.html">Mentions légales</a></div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <script src="../js/nova.js"></script>
+  <script>
+    // Filtrage dynamique des médias
+    const mediaFilters = document.querySelectorAll('.media-filter-btn');
+    const mediaCards = document.querySelectorAll('.media-card');
+
+    mediaFilters.forEach(btn => {
+      btn.addEventListener('click', () => {
+        mediaFilters.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const cat = btn.dataset.category;
+
+        mediaCards.forEach(card => {
+          if (cat === 'all' || card.dataset.category === cat) {
+            card.style.display = 'flex';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
+    });
+
+    // Lightbox modal logic
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightboxImg');
+    const lightboxCaption = document.getElementById('lightboxCaption');
+
+    function openLightbox(src, caption) {
+      lightboxImg.src = src;
+      lightboxImg.alt = caption;
+      lightboxCaption.textContent = caption;
+      lightbox.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox(e) {
+      if (e.target === lightbox) {
+        closeLightboxDirect();
+      }
+    }
+
+    function closeLightboxDirect() {
+      lightbox.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && lightbox.classList.contains('active')) {
+        closeLightboxDirect();
+      }
+    });
+  </script>
+</body>
+</html>

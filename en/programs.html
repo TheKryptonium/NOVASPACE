@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Programs — NOVA SPACE</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="../css/nova.css">
+  <link rel="shortcut icon" href="../assets/novaspace.jpeg" type="image/jpeg">
+  <style>
+    .program-card {
+      background: var(--clr-surface);
+      border: 1px solid rgba(201,206,214,0.08);
+      border-radius: var(--radius-md);
+      padding: clamp(var(--space-6), 4vw, var(--space-12));
+      margin-bottom: var(--space-12);
+      transition: border-color var(--dur-std) var(--ease), box-shadow var(--dur-std) var(--ease);
+      position: relative;
+    }
+    .program-card:hover {
+      border-color: rgba(61,214,245,0.25);
+      box-shadow: var(--shadow-cyan);
+    }
+    .prog-img-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+      gap: var(--space-4);
+      margin-top: var(--space-6);
+    }
+    .prog-img {
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+      border: 1px solid rgba(201,206,214,0.1);
+      aspect-ratio: 4/3;
+      background: var(--clr-night);
+    }
+    .prog-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .comoran-gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 180px), 1fr));
+      gap: var(--space-3);
+      margin-top: var(--space-6);
+    }
+    .comoran-gallery img {
+      width: 100%;
+      height: 180px;
+      object-fit: contain;
+      background: var(--clr-night);
+      border: 1px solid rgba(201,206,214,0.12);
+      border-radius: var(--radius-sm);
+    }
+    .spec-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr));
+      gap: var(--space-4);
+      margin-top: var(--space-6);
+      background: var(--clr-night);
+      padding: var(--space-6);
+      border-radius: var(--radius-sm);
+      border: 1px solid rgba(201,206,214,0.08);
+    }
+    .spec-cell .val {
+      font-family: var(--font-mono);
+      font-size: var(--fs-lg);
+      font-weight: 600;
+      color: var(--clr-cyan);
+    }
+    .spec-cell .lbl {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--clr-goal);
+      margin-bottom: var(--space-1);
+    }
+  </style>
+</head>
+<body>
+  <div class="grain"></div>
+
+  <!-- NAV EN -->
+  <header>
+    <nav class="navbar">
+      <div class="brand">
+        <a href="index.html" style="display:flex;align-items:center;gap:var(--space-3);">
+          <img src="../assets/novaspace.jpeg" alt="NOVA SPACE" class="brand-logo">
+          <span class="brand-name">NOVA SPACE</span>
+        </a>
+      </div>
+      <div class="navlinks" id="navlinks">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="journey.html" class="nav-link">Journey</a>
+        <a href="programs.html" class="nav-link active">Programs</a>
+        <a href="team.html" class="nav-link">Team</a>
+        <a href="media.html" class="nav-link">Media</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+      </div>
+      <div class="nav-right">
+        <div class="lang-switcher">
+          <span class="lang-btn active">EN</span>
+          <span class="lang-sep">|</span>
+          <a href="../fr/programmes.html" class="lang-btn">FR</a>
+        </div>
+        <button class="hamburger" id="hamburger" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <!-- CONTENT -->
+  <main class="page-top">
+    <section>
+      <div class="wrap">
+        <div class="section-head fade-up">
+          <div class="kicker">Technological roadmap</div>
+          <h1>Five steps to orbit.</h1>
+          <p>NOVA SPACE develops its space technologies through rigorous incremental validation. Each program delivers empirical proof, never speculative promises.</p>
+        </div>
+
+        <!-- 1. SKY RAIDER -->
+        <article class="program-card fade-up" id="sky-raider">
+          <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:var(--space-2);margin-bottom:var(--space-3);">
+            <div class="telemetry-badge">
+              <i class="fas fa-check-circle"></i>
+              <span>PROGRAM 01 · PROPULSION BENCH</span>
+            </div>
+            <div class="status-done"><span class="status-label">ACHIEVED</span></div>
+          </div>
+
+          <h2 style="font-size:clamp(var(--fs-2xl), 4vw, var(--fs-3xl));margin-bottom:var(--space-2);">SKY RAIDER</h2>
+          <p class="mono" style="color:var(--clr-cyan);font-size:var(--fs-sm);margin-bottom:var(--space-4);">First propulsion demonstrator</p>
+
+          <p style="font-size:var(--fs-md);line-height:1.7;margin-bottom:var(--space-6);">
+            SKY RAIDER is our foundational propulsion demonstrator. It provided static bench testing to validate internal ballistics, injector atomization patterns, combustion stability, and baseline data-acquisition electronics that empower every subsequent rocket program.
+          </p>
+
+          <div style="margin-top:var(--space-4);">
+            <h4 style="font-size:var(--fs-sm);font-family:var(--font-mono);color:var(--clr-goal);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:var(--space-2);">Validated Capabilities</h4>
+            <ul class="star-list">
+              <li>Experimental rocket propulsion and chamber thermodynamics</li>
+              <li>Static laboratory firing tests and sensor calibration</li>
+              <li>Proof-of-concept validation of fuel injector geometry</li>
+            </ul>
+          </div>
+        </article>
+
+        <!-- 2. PERSEVERANCE -->
+        <article class="program-card fade-up" id="perseverance">
+          <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:var(--space-2);margin-bottom:var(--space-3);">
+            <div class="telemetry-badge">
+              <i class="fas fa-rocket"></i>
+              <span>PROGRAM 02 · EXPERIMENTAL FLIGHT</span>
+            </div>
+            <div class="status-done"><span class="status-label">ACHIEVED · FLIGHT TESTED</span></div>
+          </div>
+
+          <h2 style="font-size:clamp(var(--fs-2xl), 4vw, var(--fs-3xl));margin-bottom:var(--space-2);">PERSEVERANCE</h2>
+          <p class="mono" style="color:var(--clr-cyan);font-size:var(--fs-sm);margin-bottom:var(--space-4);">First experimental test flight — April 25, 2025</p>
+
+          <p style="font-size:var(--fs-md);line-height:1.7;margin-bottom:var(--space-6);">
+            PERSEVERANCE is the first experimental rocket fully engineered and successfully launched in Cameroon. Designed by Victor EPOMBO EBOKO DINDE and the NOVA SPACE engineering team, its historic ascent demonstrated Cameroon's homegrown capacity to develop operational aerospace launch technology.
+          </p>
+
+          <!-- Real flight metrics -->
+          <div class="spec-grid">
+            <div class="spec-cell">
+              <div class="lbl">Launch Date</div>
+              <div class="val">25.04.2025</div>
+            </div>
+            <div class="spec-cell">
+              <div class="lbl">Altitude Reached</div>
+              <div class="val">≈ 1,000 m</div>
+            </div>
+            <div class="spec-cell">
+              <div class="lbl">Telemetry Transmission</div>
+              <div class="val">Streamed</div>
+            </div>
+            <div class="spec-cell">
+              <div class="lbl">Propulsion Type</div>
+              <div class="val" style="font-size:var(--fs-base);">Liquid Propellant</div>
+            </div>
+            <div class="spec-cell" style="grid-column:1/-1;">
+              <div class="lbl">Institutional Endorsement</div>
+              <div class="val" style="font-size:var(--fs-base);color:var(--clr-offwhite);">Pr R. M. MOUANGUE, Director of ENSPD</div>
+            </div>
+          </div>
+
+          <!-- Photo gallery -->
+          <div class="prog-img-grid">
+            <div class="prog-img">
+              <img src="../assets/rampe_perseverance.jpeg" alt="PERSEVERANCE on launch rail">
+            </div>
+            <div class="prog-img">
+              <img src="../assets/perseverance-assemblage-equipe.jpeg" alt="PERSEVERANCE team final assembly">
+            </div>
+            <div class="prog-img">
+              <img src="../assets/perseverance-preparation-telemetrie.jpeg" alt="PERSEVERANCE telemetry bench">
+            </div>
+          </div>
+
+          <div style="margin-top:var(--space-6);">
+            <h4 style="font-size:var(--fs-sm);font-family:var(--font-mono);color:var(--clr-goal);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:var(--space-2);">Flight-Tested Capabilities</h4>
+            <ul class="star-list">
+              <li>Liquid-propellant engine feed lines and combustion cycle</li>
+              <li>Ruggedized onboard microcontroller and sensor payload</li>
+              <li>Real-time telemetry RF downlink under dynamic flight vibration</li>
+              <li>Precision airframe integration and rail departure stabilization</li>
+            </ul>
+          </div>
+        </article>
+
+        <!-- 3. COMORAN -->
+        <article class="program-card fade-up" id="comoran" style="border-color:rgba(255,90,31,0.25);">
+          <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:var(--space-2);margin-bottom:var(--space-3);">
+            <div class="telemetry-badge" style="border-color:rgba(255,90,31,0.3);background:rgba(255,90,31,0.08);color:var(--clr-flame);">
+              <i class="fas fa-microchip"></i>
+              <span>PROGRAM 03 · ACTIVE DEMONSTRATOR</span>
+            </div>
+            <div class="status-ongoing"><span class="status-label"><span class="pulse-dot"></span> IN PROGRESS — 75%</span></div>
+          </div>
+
+          <h2 style="font-size:clamp(var(--fs-2xl), 4vw, var(--fs-3xl));margin-bottom:var(--space-2);">COMORAN</h2>
+          <p class="mono" style="color:var(--clr-flame);font-size:var(--fs-sm);margin-bottom:var(--space-4);">Electric flight demonstrator</p>
+
+          <p style="font-size:var(--fs-md);line-height:1.7;margin-bottom:var(--space-4);">
+            COMORAN is our active electric flight demonstrator, currently at <strong>75% engineering completion</strong>. It serves as an integrated testbed for high-speed electro-mechanical actuators, digital power governance, and redundant flight-control algorithms. COMORAN is under active development and is not a finalized program.
+          </p>
+
+          <!-- Progress bar -->
+          <div class="progress-bar-wrap" style="max-width:440px;margin-block:var(--space-6);">
+            <div class="progress-bar-label">
+              <span>COMORAN Program Completion</span>
+              <span style="color:var(--clr-flame);font-weight:600;">75%</span>
+            </div>
+            <div class="progress-bar">
+              <div class="progress-fill animated" style="transform:scaleX(0.75);background:linear-gradient(90deg, var(--clr-flame), rgba(255,90,31,0.6));"></div>
+            </div>
+          </div>
+
+          <div class="comoran-gallery" aria-label="COMORAN demonstrator visuals">
+            <img src="../assets/structure_mecanique_comoran.jpeg" alt="COMORAN mechanical structure" loading="lazy">
+            <img src="../assets/comoran_.jpeg" alt="COMORAN structure in the workshop" loading="lazy">
+            <img src="../assets/modelisation 3D comoran.jpeg" alt="COMORAN 3D modeling" loading="lazy">
+            <img src="../assets/modele 3D_2_COMORAN.jpeg" alt="COMORAN 3D model" loading="lazy">
+          </div>
+
+
+          <div style="margin-top:var(--space-4);">
+            <h4 style="font-size:var(--fs-sm);font-family:var(--font-mono);color:var(--clr-goal);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:var(--space-2);">Target Capabilities</h4>
+            <ul class="star-list">
+              <li>High-bandwidth electrical control actuation</li>
+              <li>Advanced redundant onboard avionics</li>
+              <li>Hardware-in-the-loop (HIL) integration testing</li>
+            </ul>
+          </div>
+        </article>
+
+        <!-- 4. CAMAROES -->
+        <article class="program-card fade-up" id="camaroes" style="border-style:dashed;">
+          <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:var(--space-2);margin-bottom:var(--space-3);">
+            <div class="telemetry-badge" style="border-color:rgba(124,133,148,0.3);background:rgba(124,133,148,0.08);color:var(--clr-goal);">
+              <i class="fas fa-sync-alt"></i>
+              <span>PROGRAM 04 · REUSABILITY RESEARCH</span>
+            </div>
+            <div class="status-objective"><span class="status-label">OBJECTIVE</span></div>
+          </div>
+
+          <h2 style="font-size:clamp(var(--fs-2xl), 4vw, var(--fs-3xl));margin-bottom:var(--space-2);">CAMAROES</h2>
+          <p class="mono" style="color:var(--clr-goal);font-size:var(--fs-sm);margin-bottom:var(--space-4);">Reusability demonstrator</p>
+
+          <p style="font-size:var(--fs-md);line-height:1.7;margin-bottom:var(--space-4);">
+            CAMAROES is our targeted reusability demonstrator program. Its purpose is purely experimental: developing and validating the guidance dynamics, throttled propulsive deceleration, and landing leg deployment necessary for recoverable flight stages.
+          </p>
+
+          <div class="card" style="background:var(--clr-night);border-left:3px solid var(--clr-cyan);margin-block:var(--space-4);padding:var(--space-4) var(--space-6);">
+            <p style="font-size:var(--fs-sm);color:var(--clr-offwhite);margin:0;">
+              <strong>Clarification:</strong> CAMAROES is an engineering technology demonstrator, not a commercial launch vehicle. Full orbital delivery is addressed in our separate, long-term roadmap.
+            </p>
+          </div>
+
+          <div style="margin-top:var(--space-4);">
+            <h4 style="font-size:var(--fs-sm);font-family:var(--font-mono);color:var(--clr-goal);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:var(--space-2);">Research Domains</h4>
+            <ul class="star-list">
+              <li>Controlled aerodynamic descent and grid-fin steering concepts</li>
+              <li>Throttleable rocket engine cycle modeling</li>
+              <li>Precision touchdown structural dynamics</li>
+            </ul>
+          </div>
+        </article>
+
+        <!-- 5. Orbital Launcher -->
+        <article class="program-card fade-up" id="orbital-launcher" style="border-style:dashed;">
+          <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:var(--space-2);margin-bottom:var(--space-3);">
+            <div class="telemetry-badge" style="border-color:rgba(124,133,148,0.3);background:rgba(124,133,148,0.08);color:var(--clr-goal);">
+              <i class="fas fa-globe-africa"></i>
+              <span>PROGRAM 05 · LONG-TERM HORIZON</span>
+            </div>
+            <div class="status-objective"><span class="status-label">LONG-TERM OBJECTIVE</span></div>
+          </div>
+
+          <h2 style="font-size:clamp(var(--fs-2xl), 4vw, var(--fs-3xl));margin-bottom:var(--space-2);">Orbital Launcher</h2>
+          <p class="mono" style="color:var(--clr-goal);font-size:var(--fs-sm);margin-bottom:var(--space-4);">The long-term vision of NOVA SPACE</p>
+
+          <p style="font-size:var(--fs-md);line-height:1.7;margin-bottom:var(--space-4);">
+            The orbital launcher represents the horizon toward which all our developmental efforts steer: establishing autonomous, sovereign orbital insertion capabilities for African nanosatellites and scientific payloads launched directly from Cameroonian soil.
+          </p>
+
+          <p style="font-size:var(--fs-sm);color:var(--clr-chrome);">
+            In strict adherence to aerospace rigor, no orbital dates, pricing schemes, or commercial promises are established in advance of physical suborbital demonstrator certification.
+          </p>
+        </article>
+
+        <!-- TECHNOLOGICAL CAPABILITIES SUMMARY -->
+        <div class="card fade-up" style="margin-top:var(--space-16);">
+          <div class="section-head" style="margin-bottom:var(--space-8);">
+            <div class="kicker">Core competencies</div>
+            <h2>Technological Capabilities Matrix</h2>
+            <p>A transparent overview of mastered technical milestones and ongoing research domains.</p>
+          </div>
+
+          <div class="grid-3" style="gap:var(--space-4);">
+            <div class="card" style="background:var(--clr-night);">
+              <div class="status-done" style="margin-bottom:var(--space-2);"><span class="status-label">ACHIEVED</span></div>
+              <h4 style="font-size:var(--fs-md);margin-bottom:var(--space-2);">Liquid Propulsion</h4>
+              <p style="font-size:var(--fs-sm);">Internal combustion chamber design, cryogenic fluid handling, and ground test bench operations.</p>
+            </div>
+
+            <div class="card" style="background:var(--clr-night);">
+              <div class="status-done" style="margin-bottom:var(--space-2);"><span class="status-label">ACHIEVED</span></div>
+              <h4 style="font-size:var(--fs-md);margin-bottom:var(--space-2);">Embedded Avionics</h4>
+              <p style="font-size:var(--fs-sm);">Custom flight-hardened printed circuit boards, power regulators, and real-time execution kernels.</p>
+            </div>
+
+            <div class="card" style="background:var(--clr-night);">
+              <div class="status-done" style="margin-bottom:var(--space-2);"><span class="status-label">ACHIEVED</span></div>
+              <h4 style="font-size:var(--fs-md);margin-bottom:var(--space-2);">Telemetry Stack</h4>
+              <p style="font-size:var(--fs-sm);">Multi-sensor data acquisition downlinking altitude, acceleration, and temperature in real-time.</p>
+            </div>
+
+            <div class="card" style="background:var(--clr-night);border-color:rgba(255,90,31,0.25);">
+              <div class="status-ongoing" style="margin-bottom:var(--space-2);"><span class="status-label"><span class="pulse-dot"></span> IN PROGRESS</span></div>
+              <h4 style="font-size:var(--fs-md);margin-bottom:var(--space-2);">Dynamic Control Loops</h4>
+              <p style="font-size:var(--fs-sm);">Electric actuator response calibration and inertial orientation sensors under test on COMORAN.</p>
+            </div>
+
+            <div class="card" style="background:var(--clr-night);border-style:dashed;">
+              <div class="status-objective" style="margin-bottom:var(--space-2);"><span class="status-label">OBJECTIVE</span></div>
+              <h4 style="font-size:var(--fs-md);margin-bottom:var(--space-2);">Stage Reusability</h4>
+              <p style="font-size:var(--fs-sm);">Aerodynamic deceleration modeling and propulsive landing software.</p>
+            </div>
+
+            <div class="card" style="background:var(--clr-night);border-style:dashed;">
+              <div class="status-objective" style="margin-bottom:var(--space-2);"><span class="status-label">OBJECTIVE</span></div>
+              <h4 style="font-size:var(--fs-md);margin-bottom:var(--space-2);">Orbital Insertion</h4>
+              <p style="font-size:var(--fs-sm);">Staged multi-motor integration, trajectory optimization, and orbital payload deployment.</p>
+            </div>
+          </div>
+        </div>
+
+        <div style="margin-top:var(--space-12);text-align:center;">
+          <a href="contact.html" class="btn-primary">
+            Partner with NOVA SPACE <i class="fas fa-arrow-right"></i>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER EN -->
+  <footer>
+    <div class="wrap foot-layout">
+      <div class="foot-brand">
+        <img src="../assets/novaspace.jpeg" alt="NOVA SPACE">
+        <div>
+          <span class="brand-name">NOVA SPACE</span>
+          <div class="foot-tagline">PERSEVERE TO THE STARS.</div>
+        </div>
+      </div>
+      <nav class="foot-nav">
+        <a href="journey.html">Journey</a>
+        <a href="programs.html">Programs</a>
+        <a href="team.html">Team</a>
+        <a href="media.html">Media</a>
+        <a href="contact.html">Contact</a>
+        <a href="legal.html">Legal</a>
+      </nav>
+      <div class="foot-social">
+        <a href="https://www.youtube.com/@NovaSpace-cmr" target="_blank" rel="noopener" aria-label="YouTube">
+          <i class="fab fa-youtube"></i>
+        </a>
+        <a href="https://www.linkedin.com/in/victor-epombo/" target="_blank" rel="noopener" aria-label="LinkedIn">
+          <i class="fab fa-linkedin"></i>
+        </a>
+      </div>
+      <div class="foot-meta">
+        <div>© 2026 NOVA SPACE — Douala, Cameroon</div>
+        <div class="foot-legal"><a href="legal.html">Legal notice</a></div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <script src="../js/nova.js"></script>
+</body>
+</html>

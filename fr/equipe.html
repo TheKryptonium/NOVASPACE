@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Équipe — NOVA SPACE</title>
+  <meta name="description" content="Découvrez les ingénieurs camerounais derrière NOVA SPACE : Victor EPOMBO, Benoit ATANGANA et Candice NKUIDJEU.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="../css/nova.css">
+  <link rel="shortcut icon" href="../assets/novaspace.jpeg" type="image/jpeg">
+  <style>
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
+      gap: var(--space-8);
+      margin-top: var(--space-12);
+    }
+    .profile-card {
+      background: var(--clr-surface);
+      border: 1px solid rgba(201, 206, 214, 0.12);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: all var(--dur-std) var(--ease);
+    }
+    .profile-card:hover {
+      border-color: rgba(61, 214, 245, 0.35);
+      box-shadow: var(--shadow-cyan);
+      transform: translateY(-4px);
+    }
+    .profile-img-wrap {
+      width: 100%;
+      aspect-ratio: 4 / 5;
+      overflow: hidden;
+      position: relative;
+      background: rgba(7, 9, 13, 0.8);
+    }
+    .profile-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+      transition: transform var(--dur-slow) var(--ease);
+    }
+    .profile-card:hover .profile-img-wrap img {
+      transform: scale(1.04);
+    }
+    .profile-content {
+      padding: var(--space-6);
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+    .profile-name {
+      font-family: var(--font-title);
+      font-size: var(--fs-xl);
+      font-weight: 700;
+      color: var(--clr-offwhite);
+      margin-bottom: var(--space-1);
+    }
+    .profile-role {
+      font-family: var(--font-mono);
+      font-size: var(--fs-xs);
+      color: var(--clr-cyan);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: var(--space-4);
+    }
+    .profile-bio {
+      font-size: var(--fs-sm);
+      color: var(--clr-chrome);
+      line-height: 1.6;
+      margin-bottom: var(--space-6);
+    }
+    .skills-title {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--clr-goal);
+      margin-bottom: var(--space-2);
+    }
+    .skills-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: var(--space-6);
+    }
+    .skill-chip {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      padding: 3px 8px;
+      background: rgba(7, 9, 13, 0.6);
+      border: 1px solid rgba(201, 206, 214, 0.12);
+      border-radius: var(--radius-sm);
+      color: var(--clr-offwhite);
+    }
+    .profile-socials {
+      margin-top: auto;
+      padding-top: var(--space-4);
+      border-top: 1px solid rgba(201, 206, 214, 0.08);
+      display: flex;
+      gap: var(--space-3);
+    }
+    .profile-social-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-family: var(--font-mono);
+      font-size: var(--fs-xs);
+      color: var(--clr-chrome);
+      padding: 4px 10px;
+      border-radius: var(--radius-sm);
+      border: 1px solid rgba(201, 206, 214, 0.15);
+      transition: all var(--dur-std) var(--ease);
+    }
+    .profile-social-link:hover {
+      color: var(--clr-cyan);
+      border-color: var(--clr-cyan);
+      background: rgba(61, 214, 245, 0.06);
+    }
+    .join-section {
+      background: var(--clr-surface);
+      border: 1px solid rgba(201, 206, 214, 0.1);
+      border-radius: var(--radius-lg);
+      padding: clamp(var(--space-8), 5vw, var(--space-16));
+      margin-top: var(--space-24);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+  </style>
+</head>
+<body>
+  <div class="grain"></div>
+  <header>
+    <nav class="navbar">
+      <div class="brand">
+        <a href="index.html" style="display:flex;align-items:center;gap:var(--space-3);text-decoration:none;">
+          <img src="../assets/novaspace.jpeg" alt="NOVA SPACE" class="brand-logo">
+          <span class="brand-name">NOVA SPACE</span>
+        </a>
+      </div>
+      <div class="navlinks" id="navlinks">
+        <a href="index.html" class="nav-link">Accueil</a>
+        <a href="parcours.html" class="nav-link">Parcours</a>
+        <a href="programmes.html" class="nav-link">Programmes</a>
+        <a href="equipe.html" class="nav-link active">Équipe</a>
+        <a href="medias.html" class="nav-link">Médias</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+      </div>
+      <div class="nav-right">
+        <div class="lang-switcher">
+          <a href="../en/team.html" class="lang-btn">EN</a>
+          <span class="lang-sep">|</span>
+          <span class="lang-btn active">FR</span>
+        </div>
+        <button class="hamburger" id="hamburger" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <main class="page-top">
+    <!-- Header Section -->
+    <section style="padding-top: var(--space-8); padding-bottom: var(--space-8);">
+      <div class="engineering-grid"></div>
+      <div class="wrap">
+        <div class="section-head fade-up">
+          <span class="kicker">Notre équipe</span>
+          <h1>Des ingénieurs camerounais qui construisent des fusées.</h1>
+          <p>NOVA SPACE est une équipe de trois ingénieurs, fondée à Douala en 2024.</p>
+        </div>
+
+        <!-- Grille des 3 profils -->
+        <div class="team-grid">
+
+          <!-- Profil 1 : Victor EPOMBO -->
+          <article class="profile-card fade-up delay-1">
+            <div class="profile-img-wrap">
+              <img src="../assets/Victor.jpeg" alt="Victor EPOMBO EBOKO DINDE" loading="lazy">
+            </div>
+            <div class="profile-content">
+              <h2 class="profile-name">Victor EPOMBO EBOKO DINDE</h2>
+              <div class="profile-role">Fondateur & CEO — NOVA SPACE</div>
+              <p class="profile-bio">Victor a conçu et fait voler PERSEVERANCE, première fusée expérimentale camerounaise. Étudiant en Génie Électrique et Systèmes Intelligents (GESI) à l'ENSPD Douala.</p>
+
+              <div class="skills-title">Compétences clés</div>
+              <div class="skills-chips">
+                <span class="skill-chip">Propulsion spatiale</span>
+                <span class="skill-chip">Électronique embarquée</span>
+                <span class="skill-chip">Systèmes de contrôle</span>
+                <span class="skill-chip">Télémétrie</span>
+                <span class="skill-chip">Mécatronique</span>
+              </div>
+
+              <div class="profile-socials">
+                <a href="https://www.linkedin.com/in/victor-epombo/" target="_blank" rel="noopener" class="profile-social-link" aria-label="LinkedIn Victor EPOMBO">
+                  <i class="fab fa-linkedin"></i> <span>LinkedIn</span>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Profil 2 : Benoit ATANGANA FOUDA -->
+          <article class="profile-card fade-up delay-2">
+            <div class="profile-img-wrap">
+              <img src="../assets/krypto_cto.jpeg" alt="ATANGANA FOUDA V. BENOIT" loading="lazy">
+            </div>
+            <div class="profile-content">
+              <h2 class="profile-name">ATANGANA FOUDA V. BENOIT</h2>
+              <div class="profile-role">CTO & Responsable Stratégique — NOVA SPACE</div>
+              <p class="profile-bio">Ingénieur en Génie Électrique et Systèmes Intelligents (GESI) à l'ENSPD Douala. En charge de la direction technique et stratégique de l'ensemble des programmes.</p>
+
+              <div class="skills-title">Compétences clés</div>
+              <div class="skills-chips">
+                <span class="skill-chip">Modélisation mathématique</span>
+                <span class="skill-chip">Électronique embarquée</span>
+                <span class="skill-chip">Systèmes de contrôle</span>
+                <span class="skill-chip">Data Science</span>
+                <span class="skill-chip">Design Thinking</span>
+                <span class="skill-chip">Gestion de projets</span>
+              </div>
+
+              <div class="profile-socials">
+                <a href="http://www.linkedin.com/in/v-benoit-atangana-84b367449" target="_blank" rel="noopener" class="profile-social-link" aria-label="LinkedIn Benoit ATANGANA">
+                  <i class="fab fa-linkedin"></i> <span>LinkedIn</span>
+                </a>
+                <a href="https://github.com/TheKryptonium" target="_blank" rel="noopener" class="profile-social-link" aria-label="GitHub Benoit ATANGANA">
+                  <i class="fab fa-github"></i> <span>GitHub</span>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Profil 3 : Candice NKUIDJEU -->
+          <article class="profile-card fade-up delay-3">
+            <div class="profile-img-wrap">
+              <img src="../assets/laeti.jpeg" alt="NKUIDJEU TSAMI Laeticia Candice" loading="lazy">
+            </div>
+            <div class="profile-content">
+              <h2 class="profile-name">NKUIDJEU TSAMI Laeticia Candice</h2>
+              <div class="profile-role">Ingénieure Énergie & Propulsion — NOVA SPACE</div>
+              <p class="profile-bio">Spécialiste de la thermodynamique et des cycles énergétiques appliqués aux moteurs-fusées expérimentaux. En charge de l'optimisation des flux et de la sécurité des ergols.</p>
+
+              <div class="skills-title">Compétences clés</div>
+              <div class="skills-chips">
+                <span class="skill-chip">Propulsion thermodynamique</span>
+                <span class="skill-chip">Efficience énergétique</span>
+                <span class="skill-chip">Chimie des ergols</span>
+              </div>
+
+              <div class="profile-socials">
+                <a href="https://www.linkedin.com/in/laeticia-candice-379401337/" target="_blank" rel="noopener" class="profile-social-link" aria-label="LinkedIn Candice NKUIDJEU">
+                  <i class="fab fa-linkedin"></i> <span>LinkedIn</span>
+                </a>
+              </div>
+            </div>
+          </article>
+
+        </div>
+
+        <!-- Section Travail en équipe / Culture -->
+        <div style="margin-top: var(--space-24);" class="fade-up">
+          <div class="grid-2" style="align-items: center;">
+            <div>
+              <span class="kicker">Au cœur des ateliers</span>
+              <h2>Rigueur scientifique & synergie collective</h2>
+              <p style="margin-top: var(--space-4); margin-bottom: var(--space-4);">De l'analyse mathématique sur tableau blanc à l'intégration mécanique fine dans nos ateliers à Douala, chaque membre de NOVA SPACE apporte une pierre indispensable à l'édifice spatial camerounais.</p>
+              <ul class="star-list" style="color: var(--clr-chrome);">
+                <li>Culture de la mesure objective et du test en conditions limites</li>
+                <li>Transmission des savoir-faire d'ingénierie aux futures promotions d'élèves ingénieurs</li>
+                <li>Démarche d'amélioration continue et rigueur documentaire stricte</li>
+              </ul>
+            </div>
+            <div style="border-radius: var(--radius-md); overflow: hidden; border: 1px solid rgba(201, 206, 214, 0.15);">
+              <img src="../assets/working_duo.jpeg" alt="L'équipe au travail" style="width:100%; height:320px; object-fit:cover; display:block;">
+            </div>
+          </div>
+        </div>
+
+        <!-- Rejoindre l'équipe -->
+        <div class="join-section fade-up">
+          <span class="kicker" style="justify-content: center;">Rejoindre l'aventure</span>
+          <h2 style="font-size: var(--fs-2xl); margin-bottom: var(--space-4);">Construisons ensemble l'aérospatiale au Cameroun</h2>
+          <p style="max-width: 640px; margin-inline: auto; margin-bottom: var(--space-8);">NOVA SPACE accueille des collaborateurs issus de l'ENSPD et des universités camerounaises. Si vous êtes ingénieur, étudiant ou chercheur et souhaitez contribuer, écrivez-nous.</p>
+          <a href="contact.html" class="btn-primary">Nous contacter <i class="fas fa-arrow-right"></i></a>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap foot-layout">
+      <div class="foot-brand">
+        <img src="../assets/novaspace.jpeg" alt="NOVA SPACE">
+        <div>
+          <span class="brand-name">NOVA SPACE</span>
+          <div class="foot-tagline">PERSÉVÉRER JUSQU'AUX ÉTOILES.</div>
+        </div>
+      </div>
+      <nav class="foot-nav">
+        <a href="parcours.html">Parcours</a>
+        <a href="programmes.html">Programmes</a>
+        <a href="equipe.html">Équipe</a>
+        <a href="medias.html">Médias</a>
+        <a href="contact.html">Contact</a>
+        <a href="mentions-legales.html">Mentions légales</a>
+      </nav>
+      <div class="foot-social">
+        <a href="https://www.youtube.com/@NovaSpace-cmr" target="_blank" rel="noopener" aria-label="YouTube">
+          <i class="fab fa-youtube"></i>
+        </a>
+        <a href="https://www.linkedin.com/in/victor-epombo/" target="_blank" rel="noopener" aria-label="LinkedIn">
+          <i class="fab fa-linkedin"></i>
+        </a>
+      </div>
+      <div class="foot-meta">
+        <div>© 2026 NOVA SPACE — Douala, Cameroun</div>
+        <div class="foot-legal"><a href="mentions-legales.html">Mentions légales</a></div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <script src="../js/nova.js"></script>
+</body>
+</html>
